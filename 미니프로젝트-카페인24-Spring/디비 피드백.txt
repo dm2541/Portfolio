@@ -1,0 +1,25 @@
+1. product table : product_type 따로 빼주고 컬럼에서 삭제
+2. product_code : AM100-001-1 이런식으로 (이름+카페코드+제품타입) 사용 아니면 (카페코드:제품이름:제품타입)
+3. 코드규칙을 만들어서 작성한다. (제품타입 0이라도 명시해줘라!!!)
+4. 제품이름을 영어로 표현할수 도 있으니까 product테이블에서 제품이름을 따로 테이블로 빼서 사용
+5. orderlist : product_price -> product_total_price
+
+orderlist 컬럼
+1. order_code
+2. user_id
+3. oder_group_list // 날짜 + 시간 -- 주문번호 (날짜 + 시간 + 유저아이디)
+5.product_total_price
+
+
+
+분리한 컬럼의 테이블
+0. 테이블 식별자 ---- PK
+0. user_id
+1. oder_group_list // 날짜 + 시간 --- PK
+2. product_code
+4. product_name  
+5.product_total_price
+
+--------- 디비 테이블 자바의 map형태로 분리시켜 해야된다.
+------ product_name에 제품이름이 아니라, 제품코드가 들어가야된다.
+------ product_name,product_code:product_name,product_code 이런식으로 데이터 넣어도 됨. (현업에서도 많이 사용하고 있다.)

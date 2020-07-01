@@ -1,0 +1,45 @@
+테이블 명세서,,,,,,,,
+시스템명, 24시간 카페 찾기,,,,,작성일, 2020-03-28,
+테이블 ID, user,,,,,,,
+테이블 명, 회원,,,,,,,
+필드 순번,필드명,데이터 TYPE,데이터 LENGTH,KEY,NULL값 여부,자동여부,디폴트값,필드설명
+1,user_id,varchar,varchar(20),PRI,NO,NO,NULL,회원 아이디 (식별자)
+2,user_pw,varchar,varchar(45),,NO,NO,NULL,회원 비밀번호
+3,user_nickName,varchar,varchar(45),,NO,NO,NULL,회원 닉네임
+4,user_tel,varchar,varchar(13),,NO,NO,NULL,회원 전화번호
+테이블 ID, cafe,,,,,,,
+테이블 명, 매장,,,,,,,
+필드 순번,필드명,데이터 TYPE,데이터 LENGTH,KEY,NULL값 여부,자동여부,디폴트값,필드설명
+1,cafe_code,int,int,PRI,NO,NO,NULL,매장 코드 (식별자)
+2,cafe_name,varchar,varchar(45),,NO,NO,NULL,매장 이름
+3,cafe_addr,varchar,varchar(100),,NO,NO,NULL,매장 주소
+4,cafe_tel,varchar,varchar(15),,NO,NO,NULL,매장 전화번호
+테이블 ID, order,,,,,,,
+테이블 명, 주문,,,,,,,
+필드 순번,필드명,데이터 TYPE,데이터 LENGTH,KEY,NULL값 여부,자동여부,디폴트값,필드설명
+1,order_code,int,int,PRI,NO,NO,NULL,주문내역 코드 (식별자)
+2,user_id,varchar,varchar(20),MUL,NO,NO,NULL,회원 아이디 (외래키)
+3,product_code,varchar,varchar(20),MUL,NO,NO,NULL,제품 코드 (외래키)
+테이블 ID, product,,,,,,,
+테이블 명, 제품,,,,,,,
+필드 순번,필드명,데이터 TYPE,데이터 LENGTH,KEY,NULL값 여부,자동여부,디폴트값,필드설명
+1,product_code,varchar,varchar(20),PRI,NO,NO,NULL,제품 코드 (식별자)
+2,cafe_code,int,int,MUL,NO,NO,NULL,매장 코드 (외래키)
+3,product_price,int,int,,NO,NO,NULL,제품 가격
+4,product_name,varchar,varchar(50),,NO,NO,NULL,제품 이름
+5,product_type,tinyint,tinyint,,NO,NO,NULL,제품 여부
+6,product_img,varchar,varchar(50),,YES,NO,NULL,제품 이미지 경로
+테이블 ID, comment,,,,,,,
+테이블 명, 후기,,,,,,,
+필드 순번,필드명,데이터 TYPE,데이터 LENGTH,KEY,NULL값 여부,자동여부,디폴트값,필드설명
+1,cnum,int,int,PRI,NO,NO,NULL,후기 코드 (식별자)
+2,user_id,varchar,varchar(20),MUL,NO,NO,NULL,회원 아이디 (외래키)
+3,cafe_code,int,int,MUL,NO,NO,NULL,매장 코드 (외래키)
+4,content,varchar,varchar(500),,YES,NO,NULL,후기 내용
+5,comment_date,varchar,varchar(50),,YES,NO,NULL,후기 작성 날짜
+테이블 ID, wish,,,,,,,
+테이블 명, 위시리스트,,,,,,,
+필드 순번,필드명,데이터 TYPE,데이터 LENGTH,KEY,NULL값 여부,자동여부,디폴트값,필드설명
+1,wish_num,int,int,PRI,NO,NO,NULL,위시리스트 코드 (식별자)
+2,user_id,varchar,varchar(20),MUL,YES,NO,NULL,회원 아이디 (외래키)
+3,cafe_code,int,int,MUL,YES,NO,NULL,매장 코드 (외래키)

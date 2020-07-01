@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.LCY.myapp.model.dao.ItemDAO">
+	<!-- 카테고리 호출 -->
+	<select id="getALLProducts"
+		resultType="com.LCY.myapp.model.dto.Product">
+		select product_code, cafe_code, product_price, product_name, product_type from product
+
+	</select>
+
+	<!-- 상품 수정 편집 -->
+
+	<update id="updateItem" parameterType="com.LCY.myapp.model.dto.Product">
+		update product set product_price=#{product_price}
+		where
+		product_id=#{product_id}
+
+
+	</update>
+
+	<!-- 상품 등록 -->
+	<insert id="register" parameterType="com.LCY.myapp.model.dto.Product">
+		insert into product(product_code, cafe_code, product_price, product_name, product_type) 
+		values (#{product_code},#{cafe_code},#{product_price},#{product_name},#{product_type})
+
+	</insert>
+
+	<!-- 삭제 처리 -->
+	<delete id="deleteItem" parameterType="com.LCY.myapp.model.dto.Product">
+		DELETE From product
+		WHERE product_name=#{product_name}
+
+	</delete>
+	
+	<select id="getProductSearchByCafe" parameterType="String" resultType="com.LCY.myapp.model.dto.Product">
+		select * from product where cafe_code=#{cafe_code}
+	</select>
+
+</mapper>
+
+

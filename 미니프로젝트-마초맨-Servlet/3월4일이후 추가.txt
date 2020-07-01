@@ -1,0 +1,32 @@
+# 3월 4일 이후 추가 내용
+# 2020.03.05
+
+- 자바
+1. ProductDAO.java
+// productDelete() 추가
+// productInsert() 수정
+// categoryProduct() 추가
+
+- 서블릿
+1. ProductDeleteProcess.java 추가
+2. ProductInsertProcess.java 수정
+3. CustomerLoginProcess.java 수정
+4. UploadImgProcess.java 수정
+
+
+- css
+1. css/style_list.css 추가
+
+- jsp
+1. productList.jsp 수정
+2. productInsert.jsp 수정
+3. productDetailInsert.jsp 수정
+4. productInfo.jsp 삭제
+5. productOuter.jsp 삭제
+6. productTop.jsp 삭제
+7. productAll.jsp 삭제
+8. productBottem.jsp 삭제
+9. mainLogin.jsp 수정
+10. productCategory.jsp 삭제
+11. product.jsp 수정
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.LCY.myapp.model.dao.CafeMapper">
+	<!-- 카페 등록 -->
+	<insert id="registCafe"
+		parameterType="com.LCY.myapp.model.dto.Cafe">
+		insert into cafe (cafe_code, cafe_name, cafe_addr, cafe_tel)
+		values (#{cafe_code}, #{cafe_name}, #{cafe_addr}, #{cafe_tel})
+	</insert>
+	<!-- 카페 목록 -->
+	<select id="listCafe"
+		resultType="com.LCY.myapp.model.dto.Cafe">
+		select cafe_code, cafe_name, cafe_addr, cafe_tel from cafe order by cafe_code
+	</select>
+	<!-- 카페 수정 -->
+	<update id="modifyCafe">
+		update cafe 
+		set 
+		cafe_name = #{cafe_name},
+		cafe_addr = #{cafe_addr},
+		cafe_tel = #{cafe_tel}
+		where
+		cafe_code = #{cafe_code}
+	</update>
+
+	<delete id="deleteCafe">
+		delete from cafe
+		where cafe_code = #{cafe_code}
+	</delete>
+	
+	<select id="cafeSearchById" resultType="com.LCY.myapp.model.dto.Cafe">
+		select * from cafe where cafe_code=#{cafe_code}
+	</select>
+</mapper>

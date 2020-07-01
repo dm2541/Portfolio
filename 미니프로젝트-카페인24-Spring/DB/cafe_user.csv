@@ -1,0 +1,5 @@
+필드순번,필드명,"데이터 TYPE","데이터 LENGTH",KEY,NULL값여부,자동여부,디폴트값,필드설명
+1,user_id,varchar,varchar(20),PRI,NO,,NULL,
+2,user_pw,varchar,varchar(45),,NO,,NULL,
+3,user_nickName,varchar,varchar(45),,NO,,NULL,
+4,user_tel,varchar,varchar(13),,NO,,NULL,

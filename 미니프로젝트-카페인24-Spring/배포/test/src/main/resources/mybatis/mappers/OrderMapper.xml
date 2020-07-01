@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.LCY.myapp.model.dao.OrderMapper">
+	<select id="orderAll" resultType="com.LCY.myapp.model.dto.Order">
+		SELECT * FROM orderlist
+	</select>
+	
+	<select id="orderList" parameterType="String" resultType="com.LCY.myapp.model.dto.Order">
+		select c.cafe_name, p.product_name, p.product_price
+		from cafe c, product p, orderlist o 
+		where o.product_code=p.product_code AND p.cafe_code=c.cafe_code AND user_id = #{user_id}
+	</select>
+</mapper>

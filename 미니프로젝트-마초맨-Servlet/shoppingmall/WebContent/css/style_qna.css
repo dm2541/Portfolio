@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+/* * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+} */
+
+body {
+	font-family: "AppleSDGothicNeo", "Apple SD Gothic Neo",
+		"Apple SD 산돌고딕 Neo", sans-serif;;
+	/* display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh; */
+}
+
+.loginBoxWrap {
+	position: relative;
+	max-width: 420px;
+	margin: 20px auto;
+}
+
+.loginBox {
+	font-size: 50px;
+	font-weight: 600;
+	text-align: center;
+}
+
+.id {
+	padding: 0 0px 0px 0px;
+	display: block;
+}
+
+.name {
+	padding: 0 0px 0px 0px;
+	display: block;
+}
+
+.addr {
+	padding: 0 0px 0px 0px;
+	display: block;
+}
+
+input[type='text'], input[type='password'], textarea {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    text-indent: 3px;
+}
+
+.inputV3 {
+    border: 1px solid #ccc;
+    padding: 15px 10px 14px 10px;
+    height: 50px;
+    margin: 0;
+    width: 100%;
+    font-size: 14px;
+    line-height: 21px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    color: #000;
+}

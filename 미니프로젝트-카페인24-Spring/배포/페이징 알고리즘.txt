@@ -1,0 +1,46 @@
+1. 한 페이지에 출력될 게시물 수 
+(countList)
+2. 한 화면에 출력될 페이지 수
+(countPage)
+3. 현재 페이지 번호
+(page)
+
+총 몇 페이지가 존재 해야되지? (totalPage)
+totalCount : 총 게시물 수
+totalPage = totalCount / countList
+if(totalCount % countList > 0){
+  totalPage++;
+}
+
+현재 페이지(page)가 총 페이지(totalPage)보다 크다면? 
+if(totalPage < page) page = totalPage;
+
+
+
+<!-- 하단 페이지 수 -->
+
+총 게시물 : 255개
+한 화면에 보여줄 게시물 : 10개
+하단에 표할 페이지 수 : 10개
+
+하단에 표시될 페이지 번호
+만약 page = 5라면?
+하단에는 1~10까지의 페이지 번호가 표시
+
+startPage = ((page-1)/10)*10+1
+endPage = startPage + countPage - 1;
+
+for(int i = startPage; i<=endPage ; i++){
+  syso("" + i + ""); // 이런식으로 표시
+}
+
+그렇다면 page=22인 경우는?
+255개 게시물이 있다면 총 페이지는 26페이지
+page=22인 경우 21~30페이지
+하지만 26페이지가 마지막이기 때문에
+21페이지에서는 countPage를 더하면 안된다.
+if(endPage > totalPage){
+  endPage = totalPage;
+}
+
+

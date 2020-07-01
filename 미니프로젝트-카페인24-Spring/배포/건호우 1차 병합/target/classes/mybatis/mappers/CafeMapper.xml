@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.LCY.myapp.model.dao.CafeMapper">
+	<select id="getCafeAll" resultType="com.LCY.myapp.model.dto.Cafe">
+		select * from cafe
+	</select>
+	<select id="cafeSearch" parameterType="String" resultType="com.LCY.myapp.model.dto.Cafe">
+		select * from cafe where cafe_name like concat('%',#{cafe_name},'%')
+	</select>
+	<select id="cafeSearchById" parameterType="String" resultType="com.LCY.myapp.model.dto.Cafe">
+		select * from cafe where cafe_code=#{cafe_code}
+	</select>
+</mapper>
