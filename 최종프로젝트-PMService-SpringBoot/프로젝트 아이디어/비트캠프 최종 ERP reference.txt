@@ -1,0 +1,53 @@
+<<UntitledBistro >>
+
+
+팀원들의 공통 관심 분야 + 공통 관심 시스템
+>> 음식 + ERP + POS
+
+- 벤치마킹
+Web ERP 사이트 Ecount 벤치마킹
+POS 시스템 벤치마킹
+
+- 기능
+
+1. 발주 
+2. 인사 (CustomLoginController -> security)
+3. 재고 (WebSocketClass -> 실시간 양방향 통신)
+4. 주문 (카카오페이를 활용한 클래스)
+5. 정산 (2가지 인터페이스 -> ??)
+6. 서비스 (기본적인 CRUD 서비스)
+
+- ERD
+
+- UCD
+
+액터 : 회원, 매니저/사장, 
+
+- 사용기술
+
+Data table API : 페이징 처리, 검색 기능
+FullCalendar : 큰 화면의 달력에 예약 기능 비동기 처리
+Sweet Alert : 깔끔한 얼럿창, 비동기 처리
+Google Chart API : 결산 현황
+jsGrid : 기본적인 발주와 재고의 페이징 처리
+
+- 시연
+
+// 로그인
+// 회원 주문 -> 주방으로 주문서가 전달
+
+// 이게 ERP냐?
+
+
+
+
+
+
+
+<< SEED >>
+
+1. Entity Relationship Diagram
+2. Use Case Diagram
+3. Class Diagram
+
+

@@ -1,0 +1,16 @@
+insert into project_task_groups
+values('G-TWS-001', '시스템 분석', '시스템 분석에 대한 그룹', '200621-TWS');
+
+insert into project_task_groups
+values('G-TWS-002', '시스템 설계', '시스템 설계에 대한 그룹', '200621-TWS');
+
+insert into project_task_groups
+values('G-VAD-001', '요구사항 분석', '요구사항 분석에 대한 그룹', '200619-VAD');
+
+insert into project_task_groups
+values('G-VAD-002', '요구사항 명세', '요구사항 명세에 대한 그룹', '200619-VAD');
+
+
+insert into project_tasks
+values('task-TWS-001', '시스템 분석01', '20/06/28', '20/06/30', '시스템 분석01-01', 'G-TWS-001', 'taskstatus100');
+

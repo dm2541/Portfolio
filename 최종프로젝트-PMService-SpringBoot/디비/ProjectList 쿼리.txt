@@ -1,0 +1,44 @@
+select
+p.project_code as project_code,
+p.project_name as project_name,
+(select project_type
+from project_types ptype
+where ptype.project_typecode = p.project_typecode) as project_typeName,
+p.project_start as project_start,
+p.project_finish as project_finish,
+(select count(*) 
+from project_tasks pt, project_task_groups ptg , project_outputs po 
+where p.project_code = ptg.project_code 
+AND pt.taskGroup_code = ptg.taskGroup_code 
+AND pt.task_code = po.task_code) as projectOutputAccount,
+(select count(*)
+from project_tasks pt, project_task_groups ptg , project_issues pi
+where p.project_code = ptg.project_code 
+AND pt.taskGroup_code = ptg.taskGroup_code 
+AND pt.task_code = pi.task_code) as projectIssueAccount
+from projects p
+order by project_start
+
+select project_type from project_types;
+
+create or replace view projectList as
+select 
+p.project_name as project_name,
+(select project_type
+from project_types ptype
+where ptype.project_typecode = p.project_typecode) as project_typeName,
+p.project_start as project_start,
+p.project_finish as project_finish,
+(select count(*) 
+from project_tasks pt, project_task_groups ptg , project_outputs po 
+where p.project_code = ptg.project_code 
+AND pt.taskGroup_code = ptg.taskGroup_code 
+AND pt.task_code = po.task_code) as output_count,
+(select count(*)
+from project_tasks pt, project_task_groups ptg , project_issues pi
+where p.project_code = ptg.project_code 
+AND pt.taskGroup_code = ptg.taskGroup_code 
+AND pt.task_code = pi.task_code) as issue_count
+from projects p
+
+select * from projectList where project_typeName = (select project_type from project_types where project_typeCode='devtype100');

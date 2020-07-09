@@ -1,0 +1,20 @@
+insert into users values('lcy0815', '1234', '이찬영', 'lcy0815@bitcom.kr', '010-3080-8433', (select systimestamp from dual), 1, 1);
+
+insert into project_members values('001-TWS-PM', '200621-TWS', 'lcy0815', 'duty200');
+insert into project_members values('002-TWS-MANAGER', '200621-TWS', 'user001', 'duty300');
+insert into project_members values('003-TWS-DEVELOPER', '200621-TWS', 'user002', 'duty400');
+insert into project_members values('004-TWS-DEVELOPER', '200621-TWS', 'user003', 'duty400');
+insert into project_members values('005-TWS-DEVELOPER', '200621-TWS', 'user004', 'duty400');
+
+insert into users values('khj0623', '1234', '김헤진', 'khj0623@bitcom.kr', '010-1234-1234',(select systimestamp from dual), 1, 1);
+insert into users values('user005', '1234', '유저005', 'user005@bitcom.kr', '010-0909-0808',(select systimestamp from dual), 1, 2);
+insert into users values('user006', '1234', '유저006', 'user006@bitcom.kr', '010-0808-0707',(select systimestamp from dual), 2, 3);
+insert into users values('user007', '1234', '유저007', 'user007@bitcom.kr', '010-0707-0606',(select systimestamp from dual), 2, 4);
+insert into users values('user008', '1234', '유저008', 'user008@bitcom.kr', '010-0606-0505',(select systimestamp from dual), 3, 5);
+
+
+insert into project_members values('001-VAD-PM', '200619-VAD', 'khj0623', 'duty200');
+insert into project_members values('002-VAD-MANAGER', '200619-VAD', 'user005', 'duty300');
+insert into project_members values('003-VAD-MANAGER', '200619-VAD', 'user006', 'duty300');
+insert into project_members values('004-VAD-DEVELOPER', '200619-VAD', 'user007', 'duty400');
+insert into project_members values('005-VAD-DEVELOPER', '200619-VAD', 'user008', 'duty400');

@@ -1,0 +1,29 @@
+insert into projects(project_code, project_name, project_subName, project_start, project_finish, project_pm, project_typeCode, project_statusCode)
+values('200621-TWS', '솔루션 기반 여행 플랫폼 웹 서비스 제작','TWS','20/06/21', '20/08/21', 'lcy0815','devtype200','projstatus100');
+
+insert into projects(project_code, project_name, project_subName, project_start, project_finish, project_pm, project_typeCode, project_statusCode)
+values('200619-VAD', '딥러닝 기반 Vision 알고리즘 개발','VAD','20/06/19', '20/12/19', 'khj0623','devtype100','projstatus100');
+
+insert into projects(project_code, project_name, project_subName, project_start, project_finish, project_pm, project_typeCode, project_statusCode)
+values('200615-FDA', '음식 업체 오더 배달 네이티브 APP 개발','FDA','20/06/15', '20/08/05', 'ljy0925','devtype200','projstatus100');
+
+insert into projects(project_code, project_name, project_subName, project_start, project_finish, project_pm, project_typeCode, project_statusCode)
+values('200612-RPM', 'React Native 기반 포트폴리오 관리 앱 서비스 리뉴얼','RPM','20/06/12', '20/09/12', 'jsg1234','devtype500','projstatus300');
+
+insert into projects(project_code, project_name, project_subName, project_start, project_finish, project_pm, project_typeCode, project_statusCode)
+values('200609-WMW', '워드프레스 기반 미디어 홈페이지 디자인 및 개발 리뉴얼','WMW','20/06/09', '20/07/09', 'krm1234','devtype500','projstatus100');
+
+insert into projects(project_code, project_name, project_subName, project_start, project_finish, project_pm, project_typeCode, project_statusCode)
+values('200615-HAD', '광고주와 인플루언서 매칭 하이브리드 웹/앱 디자인','HAD','20/06/15', '20/08/15', 'hjy1234','devtype300','projstatus100');
+
+insert into projects(project_code, project_name, project_subName, project_start, project_finish, project_pm, project_typeCode, project_statusCode)
+values('200609-WMW', '결제 플랫폼 품질 관리','PQA','20/05/13', '20/07/03', 'msh0818','devtype400','projstatus100');
+
+insert into projects(project_code, project_name, project_subName, project_start, project_finish, project_pm, project_typeCode, project_statusCode)
+values('200604-CSC', 'Java 기반 대기업 중국 스마트폰 센터 구축','CSC','20/06/04', '21/01/04', 'china1234','devtype200','projstatus100');
+
+insert into projects(project_code, project_name, project_subName, project_start, project_finish, project_pm, project_typeCode, project_statusCode)
+values('200604-LFA', 'Django/React-Native 기반 B2B2C 라이프스타일 하이브리드 앱 개발','LFA','20/06/11', '20/08/11', 'jango1234','devtype200','projstatus400');
+
+insert into projects(project_code, project_name, project_subName, project_start, project_finish, project_pm, project_typeCode, project_statusCode)
+values('200615-WAP', '웹 기반 관리자 페이지 개발','WAP','20/06/15', '20/07/15', 'admin1234','devtype200','projstatus400');

@@ -1,0 +1,55 @@
+drop table issue_files
+drop table project_submanagers;
+alter table project_tasks add issue_file_name varchar2(200);
+alter table project_tasks add issue_file_path varchar2(300);
+
+insert into project_types values('devtype100', '연구');
+insert into project_types values('devtype200', '개발');
+insert into project_types values('devtype300', '디자인');
+insert into project_types values('devtype400', '품질');
+insert into project_types values('devtype500', '유지보수');
+
+insert into project_status values('projstatus100', '진행중');
+insert into project_status values('projstatus200', '완료');
+insert into project_status values('projstatus300', '중단');
+insert into project_status values('projstatus400', '진행예정');
+
+insert into dutys values('duty100', 'PMO');
+insert into dutys values('duty200', 'PM');
+insert into dutys values('duty300', 'manager');
+insert into dutys values('duty400', 'developer');
+
+insert into project_output_types values('R1', '사용자 요구사항 정의서');
+insert into project_output_types values('R2', '유스케이스 명세서');
+insert into project_output_types values('R3', '요구사항 추적표');
+insert into project_output_types values('D1', '클래스 설계서');
+insert into project_output_types values('D2', '사용자 인터페이스 설계서');
+insert into project_output_types values('D3', '컴포넌트 설계서');
+insert into project_output_types values('D4', '인터페이스 설계서');
+insert into project_output_types values('D5', '아키텍처 설계서');
+insert into project_output_types values('D6', '총괄시험 계획서');
+insert into project_output_types values('D7', '시스템시험 시나리오');
+insert into project_output_types values('D8', '엔티티 관계 모형 기술서');
+insert into project_output_types values('D9', '데이터베이스 설계서');
+insert into project_output_types values('D10', '통합시험 시나리오');
+insert into project_output_types values('D11', '단위시험 케이스');
+insert into project_output_types values('D12', '데이터 전환 및 초기데이터 설계서');
+insert into project_output_types values('I1', '프로그램 코드');
+insert into project_output_types values('I2', '단위시험 결과서');
+insert into project_output_types values('I3', '데이터베이스 테이블');
+insert into project_output_types values('T1', '통합시험 결과서');
+insert into project_output_types values('T2', '시스템시험 결과서');
+insert into project_output_types values('T3', '사용자 지침서');
+insert into project_output_types values('T4', '운영자 지침서');
+insert into project_output_types values('T5', '시스템 설치 결과서');
+insert into project_output_types values('T6', '인수시험 시나리오');
+insert into project_output_types values('T7', '인수시험 결과서');
+
+insert into project_task_status values('taskstatus100','진행중');
+insert into project_task_status values('taskstatus200','완료');
+insert into project_task_status values('taskstatus300','대기');
+
+insert into project_issue_types values('issuetype100', '고객변심');
+insert into project_issue_types values('issuetype200', '일정지연');
+insert into project_issue_types values('issuetype300', '품질개선');
+insert into project_issue_types values('issuetype400', '기타사유');

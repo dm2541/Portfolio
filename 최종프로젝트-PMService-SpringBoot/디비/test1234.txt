@@ -1,0 +1,1299 @@
+/* 프로젝트 */
+CREATE TABLE projectms.projects (
+	project_code VARCHAR2(50) NOT NULL, /* 프로젝트 코드 */
+	project_name VARCHAR2(100) NOT NULL, /* 프로젝트 이름 */
+	project_subName VARCHAR2(10) NOT NULL, /* 프로젝트 약어 */
+	project_start DATE NOT NULL, /* 프로젝트 시작일 */
+	project_finish DATE NOT NULL, /* 프로젝트 종료일 */
+	project_pm VARCHAR2(50) NOT NULL, /* 프로젝트 관리자 아이디 */
+	project_pmo VARCHAR2(50), /* 프로젝트 PMO 아이디 */
+	project_description VARCHAR2(500), /* 프로젝트 설명 */
+	project_priority NUMBER, /* 프로젝트 우선순위 */
+	project_statusCode VARCHAR2(30), /* 프로젝트 상태 코드 */
+	project_typeCode VARCHAR2(30) NOT NULL /* 개발 형태 코드 */
+);
+
+COMMENT ON TABLE projectms.projects IS '프로젝트';
+
+COMMENT ON COLUMN projectms.projects.project_code IS '프로젝트 코드';
+
+COMMENT ON COLUMN projectms.projects.project_name IS '프로젝트 이름';
+
+COMMENT ON COLUMN projectms.projects.project_subName IS '프로젝트 약어';
+
+COMMENT ON COLUMN projectms.projects.project_start IS '프로젝트 시작일';
+
+COMMENT ON COLUMN projectms.projects.project_finish IS '프로젝트 종료일';
+
+COMMENT ON COLUMN projectms.projects.project_pm IS '프로젝트 관리자 아이디';
+
+COMMENT ON COLUMN projectms.projects.project_pmo IS '프로젝트 PMO 아이디';
+
+COMMENT ON COLUMN projectms.projects.project_description IS '프로젝트 설명';
+
+COMMENT ON COLUMN projectms.projects.project_priority IS '프로젝트 우선순위';
+
+COMMENT ON COLUMN projectms.projects.project_statusCode IS '프로젝트 상태 코드';
+
+COMMENT ON COLUMN projectms.projects.project_typeCode IS '개발 형태 코드';
+
+CREATE UNIQUE INDEX projectms.PK_projects
+	ON projectms.projects (
+		project_code ASC
+	);
+
+ALTER TABLE projectms.projects
+	ADD
+		CONSTRAINT PK_projects
+		PRIMARY KEY (
+			project_code
+		);
+
+/* 프로젝트 작업 */
+CREATE TABLE projectms.project_tasks (
+	task_code VARCHAR2(30) NOT NULL, /* 작업 코드 */
+	task_name VARCHAR2(100) NOT NULL, /* 작업 이름 */
+	task_start DATE NOT NULL, /* 작업 시작일 */
+	task_finish DATE, /* 작업 종료일 */
+	task_description VARCHAR2(500), /* 작업 설명 */
+	taskGroup_code VARCHAR2(30), /* 그룹 코드 */
+	task_status_code VARCHAR2(30) /* 작업 상태 코드 */
+);
+
+COMMENT ON TABLE projectms.project_tasks IS '프로젝트 작업';
+
+COMMENT ON COLUMN projectms.project_tasks.task_code IS '작업 코드';
+
+COMMENT ON COLUMN projectms.project_tasks.task_name IS '작업 이름';
+
+COMMENT ON COLUMN projectms.project_tasks.task_start IS '작업 시작일';
+
+COMMENT ON COLUMN projectms.project_tasks.task_finish IS '작업 종료일';
+
+COMMENT ON COLUMN projectms.project_tasks.task_description IS '작업 설명';
+
+COMMENT ON COLUMN projectms.project_tasks.taskGroup_code IS '그룹 코드';
+
+COMMENT ON COLUMN projectms.project_tasks.task_status_code IS '작업 상태 코드';
+
+CREATE UNIQUE INDEX projectms.PK_project_tasks
+	ON projectms.project_tasks (
+		task_code ASC
+	);
+
+ALTER TABLE projectms.project_tasks
+	ADD
+		CONSTRAINT PK_project_tasks
+		PRIMARY KEY (
+			task_code
+		);
+
+/* 프로젝트 작업 그룹 */
+CREATE TABLE projectms.project_task_groups (
+	taskGroup_code VARCHAR2(30) NOT NULL, /* 그룹 코드 */
+	taskGroup_name VARCHAR2(100) NOT NULL, /* 그룹 이름 */
+	taskGroup_description VARCHAR2(500) NOT NULL, /* 그룹 설명 */
+	project_code VARCHAR2(50) /* 프로젝트 코드 */
+);
+
+COMMENT ON TABLE projectms.project_task_groups IS '프로젝트 작업 그룹';
+
+COMMENT ON COLUMN projectms.project_task_groups.taskGroup_code IS '그룹 코드';
+
+COMMENT ON COLUMN projectms.project_task_groups.taskGroup_name IS '그룹 이름';
+
+COMMENT ON COLUMN projectms.project_task_groups.taskGroup_description IS '그룹 설명';
+
+COMMENT ON COLUMN projectms.project_task_groups.project_code IS '프로젝트 코드';
+
+CREATE UNIQUE INDEX projectms.PK_project_task_groups
+	ON projectms.project_task_groups (
+		taskGroup_code ASC
+	);
+
+ALTER TABLE projectms.project_task_groups
+	ADD
+		CONSTRAINT PK_project_task_groups
+		PRIMARY KEY (
+			taskGroup_code
+		);
+
+/* 개발 형태 */
+CREATE TABLE projectms.project_types (
+	project_typeCode VARCHAR2(30) NOT NULL, /* 개발 형태 코드 */
+	project_type VARCHAR2(50) NOT NULL /* 개발 형태 */
+);
+
+COMMENT ON TABLE projectms.project_types IS '개발 형태';
+
+COMMENT ON COLUMN projectms.project_types.project_typeCode IS '개발 형태 코드';
+
+COMMENT ON COLUMN projectms.project_types.project_type IS '개발 형태';
+
+CREATE UNIQUE INDEX projectms.PK_project_types
+	ON projectms.project_types (
+		project_typeCode ASC
+	);
+
+ALTER TABLE projectms.project_types
+	ADD
+		CONSTRAINT PK_project_types
+		PRIMARY KEY (
+			project_typeCode
+		);
+
+/* 프로젝트 이슈 */
+CREATE TABLE projectms.project_issues (
+	issue_code VARCHAR2(30) NOT NULL, /* 이슈 코드 */
+	issue_name VARCHAR2(100), /* 이슈명 */
+	issue_description VARCHAR2(500), /* 이슈 내용 */
+	issue_user_id VARCHAR2(50), /* 이슈 등록자 아이디 */
+	issue_date DATE, /* 이슈 등록일 */
+	issue_action_id VARCHAR2(50), /* 이슈 조치자 아이디 */
+	issue_action_date DATE, /* 이슈 조치 희망일 */
+	issue_type_code VARCHAR2(30), /* 이슈 형태 코드 */
+	task_code VARCHAR2(30) /* 작업 코드 */
+);
+
+COMMENT ON TABLE projectms.project_issues IS '프로젝트 이슈';
+
+COMMENT ON COLUMN projectms.project_issues.issue_code IS '이슈 코드';
+
+COMMENT ON COLUMN projectms.project_issues.issue_name IS '이슈명';
+
+COMMENT ON COLUMN projectms.project_issues.issue_description IS '이슈 내용';
+
+COMMENT ON COLUMN projectms.project_issues.issue_user_id IS '이슈 등록자 아이디';
+
+COMMENT ON COLUMN projectms.project_issues.issue_date IS '이슈 등록일';
+
+COMMENT ON COLUMN projectms.project_issues.issue_action_id IS '이슈 조치자 아이디';
+
+COMMENT ON COLUMN projectms.project_issues.issue_action_date IS '이슈 조치 희망일';
+
+COMMENT ON COLUMN projectms.project_issues.issue_type_code IS '이슈 형태 코드';
+
+COMMENT ON COLUMN projectms.project_issues.task_code IS '작업 코드';
+
+CREATE UNIQUE INDEX projectms.PK_project_issues
+	ON projectms.project_issues (
+		issue_code ASC
+	);
+
+ALTER TABLE projectms.project_issues
+	ADD
+		CONSTRAINT PK_project_issues
+		PRIMARY KEY (
+			issue_code
+		);
+
+/* 프로젝트 멤버 */
+CREATE TABLE projectms.project_members (
+	project_joinCode VARCHAR2(30) NOT NULL, /* 프로젝트 참여 코드 */
+	project_code VARCHAR2(50), /* 프로젝트 코드 */
+	user_id VARCHAR2(50), /* 사용자 ID */
+	duty_code VARCHAR2(30) /* 직책코드 */
+);
+
+COMMENT ON TABLE projectms.project_members IS '프로젝트 멤버';
+
+COMMENT ON COLUMN projectms.project_members.project_joinCode IS '프로젝트 참여 코드';
+
+COMMENT ON COLUMN projectms.project_members.project_code IS '프로젝트 코드';
+
+COMMENT ON COLUMN projectms.project_members.user_id IS '사용자 ID';
+
+COMMENT ON COLUMN projectms.project_members.duty_code IS '직책코드';
+
+CREATE UNIQUE INDEX projectms.PK_project_members
+	ON projectms.project_members (
+		project_joinCode ASC
+	);
+
+ALTER TABLE projectms.project_members
+	ADD
+		CONSTRAINT PK_project_members
+		PRIMARY KEY (
+			project_joinCode
+		);
+
+/* 프로젝트 산출물 */
+CREATE TABLE projectms.project_outputs (
+	output_code VARCHAR2(30) NOT NULL, /* 산출물 코드 */
+	output_name VARCHAR2(100) NOT NULL, /* 산출물 이름 */
+	output_user VARCHAR2(50) NOT NULL, /* 산출물 등록자 아이디 */
+	output_date DATE, /* 산출물 등록일 */
+	output_path VARCHAR2(100), /* 산출물 경로 */
+	output_type_code VARCHAR2(30), /* 산출물 유형 */
+	project_code VARCHAR2(50) /* 프로젝트 코드 */
+);
+
+COMMENT ON TABLE projectms.project_outputs IS '프로젝트 산출물';
+
+COMMENT ON COLUMN projectms.project_outputs.output_code IS '산출물 코드';
+
+COMMENT ON COLUMN projectms.project_outputs.output_name IS '산출물 이름';
+
+COMMENT ON COLUMN projectms.project_outputs.output_user IS '산출물 등록자 아이디';
+
+COMMENT ON COLUMN projectms.project_outputs.output_date IS '산출물 등록일';
+
+COMMENT ON COLUMN projectms.project_outputs.output_path IS '산출물 경로';
+
+COMMENT ON COLUMN projectms.project_outputs.output_type_code IS '산출물 유형';
+
+COMMENT ON COLUMN projectms.project_outputs.project_code IS '프로젝트 코드';
+
+CREATE UNIQUE INDEX projectms.PK_project_outputs
+	ON projectms.project_outputs (
+		output_code ASC
+	);
+
+ALTER TABLE projectms.project_outputs
+	ADD
+		CONSTRAINT PK_project_outputs
+		PRIMARY KEY (
+			output_code
+		);
+
+/* 프로젝트 산출물 유형 */
+CREATE TABLE projectms.project_output_types (
+	output_type_code VARCHAR2(30) NOT NULL, /* 산출물 유형 코드 */
+	output_type VARCHAR2(50) NOT NULL /* 산출물 유형 이름 */
+);
+
+COMMENT ON TABLE projectms.project_output_types IS '프로젝트 산출물 유형';
+
+COMMENT ON COLUMN projectms.project_output_types.output_type_code IS '산출물 유형 코드';
+
+COMMENT ON COLUMN projectms.project_output_types.output_type IS '산출물 유형 이름';
+
+CREATE UNIQUE INDEX projectms.PK_project_output_types
+	ON projectms.project_output_types (
+		output_type_code ASC
+	);
+
+ALTER TABLE projectms.project_output_types
+	ADD
+		CONSTRAINT PK_project_output_types
+		PRIMARY KEY (
+			output_type_code
+		);
+
+/* 이슈 형태 */
+CREATE TABLE projectms.project_issue_types (
+	issue_type_code VARCHAR2(30) NOT NULL, /* 이슈 형태 코드 */
+	issue_type VARCHAR2(20) NOT NULL /* 이슈 형태 */
+);
+
+COMMENT ON TABLE projectms.project_issue_types IS '이슈 형태';
+
+COMMENT ON COLUMN projectms.project_issue_types.issue_type_code IS '이슈 형태 코드';
+
+COMMENT ON COLUMN projectms.project_issue_types.issue_type IS '이슈 형태';
+
+CREATE UNIQUE INDEX projectms.PK_project_issue_types
+	ON projectms.project_issue_types (
+		issue_type_code ASC
+	);
+
+ALTER TABLE projectms.project_issue_types
+	ADD
+		CONSTRAINT PK_project_issue_types
+		PRIMARY KEY (
+			issue_type_code
+		);
+
+/* 작업 상태 */
+CREATE TABLE projectms.project_task_status (
+	task_status_code VARCHAR2(30) NOT NULL, /* 작업 상태 코드 */
+	task_status VARCHAR2(20) NOT NULL /* 작업 상태 */
+);
+
+COMMENT ON TABLE projectms.project_task_status IS '작업 상태';
+
+COMMENT ON COLUMN projectms.project_task_status.task_status_code IS '작업 상태 코드';
+
+COMMENT ON COLUMN projectms.project_task_status.task_status IS '작업 상태';
+
+CREATE UNIQUE INDEX projectms.PK_project_task_status
+	ON projectms.project_task_status (
+		task_status_code ASC
+	);
+
+ALTER TABLE projectms.project_task_status
+	ADD
+		CONSTRAINT PK_project_task_status
+		PRIMARY KEY (
+			task_status_code
+		);
+
+/* 메시지 */
+CREATE TABLE projectms.messages (
+	message_id NUMBER NOT NULL, /* 메시지 일련번호 */
+	author_id VARCHAR2(50) NOT NULL, /* 작성자 */
+	conversation_id VARCHAR2(50) NOT NULL, /* 대화방 번호 */
+	content VARCHAR2(1000) NOT NULL, /* 내용 */
+	creation_time TIMESTAMP NOT NULL /* 작성시간 */
+);
+
+COMMENT ON TABLE projectms.messages IS '메시지';
+
+COMMENT ON COLUMN projectms.messages.message_id IS '메시지 일련번호';
+
+COMMENT ON COLUMN projectms.messages.author_id IS '작성자';
+
+COMMENT ON COLUMN projectms.messages.conversation_id IS '대화방 번호';
+
+COMMENT ON COLUMN projectms.messages.content IS '내용';
+
+COMMENT ON COLUMN projectms.messages.creation_time IS '작성시간';
+
+CREATE UNIQUE INDEX projectms.PK_messages
+	ON projectms.messages (
+		message_id ASC
+	);
+
+ALTER TABLE projectms.messages
+	ADD
+		CONSTRAINT PK_messages
+		PRIMARY KEY (
+			message_id
+		);
+
+/* 쪽지 */
+CREATE TABLE projectms.notes (
+	note_id NUMBER NOT NULL, /* 쪽지 일련번호 */
+	author_id VARCHAR2(50) NOT NULL, /* 작성자 */
+	receiver_id VARCHAR2(50) NOT NULL, /* 수신자 */
+	content VARCHAR2(1000) NOT NULL, /* 내용 */
+	creation_time TIMESTAMP NOT NULL /* 작성시간 */
+);
+
+COMMENT ON TABLE projectms.notes IS '쪽지';
+
+COMMENT ON COLUMN projectms.notes.note_id IS '쪽지 일련번호';
+
+COMMENT ON COLUMN projectms.notes.author_id IS '작성자';
+
+COMMENT ON COLUMN projectms.notes.receiver_id IS '수신자';
+
+COMMENT ON COLUMN projectms.notes.content IS '내용';
+
+COMMENT ON COLUMN projectms.notes.creation_time IS '작성시간';
+
+CREATE UNIQUE INDEX projectms.PK_notes
+	ON projectms.notes (
+		note_id ASC
+	);
+
+ALTER TABLE projectms.notes
+	ADD
+		CONSTRAINT PK_notes
+		PRIMARY KEY (
+			note_id
+		);
+
+/* 대화방 */
+CREATE TABLE projectms.chatrooms (
+	conversation_id VARCHAR2(50) NOT NULL, /* 대화방 일련번호 */
+	last_message_id NUMBER NOT NULL, /* 마지막 메세지 번호 */
+	conversation_creation_time TIMESTAMP NOT NULL /* 대화방 생성시간 */
+);
+
+COMMENT ON TABLE projectms.chatrooms IS '대화방';
+
+COMMENT ON COLUMN projectms.chatrooms.conversation_id IS '대화방 일련번호';
+
+COMMENT ON COLUMN projectms.chatrooms.last_message_id IS '마지막 메세지 번호';
+
+COMMENT ON COLUMN projectms.chatrooms.conversation_creation_time IS '대화방 생성시간';
+
+CREATE UNIQUE INDEX projectms.PK_chatrooms
+	ON projectms.chatrooms (
+		conversation_id ASC
+	);
+
+ALTER TABLE projectms.chatrooms
+	ADD
+		CONSTRAINT PK_chatrooms
+		PRIMARY KEY (
+			conversation_id
+		);
+
+/* 참여 */
+CREATE TABLE projectms.participations (
+	user_id VARCHAR2(50) NOT NULL, /* 참여자 아이디 */
+	conversation_id VARCHAR2(50) NOT NULL, /* 대화방 번호 */
+	join_time TIMESTAMP NOT NULL /* 대화방 접속시간 */
+);
+
+COMMENT ON TABLE projectms.participations IS '참여';
+
+COMMENT ON COLUMN projectms.participations.user_id IS '참여자 아이디';
+
+COMMENT ON COLUMN projectms.participations.conversation_id IS '대화방 번호';
+
+COMMENT ON COLUMN projectms.participations.join_time IS '대화방 접속시간';
+
+CREATE UNIQUE INDEX projectms.PK_participations
+	ON projectms.participations (
+		user_id ASC,
+		conversation_id ASC
+	);
+
+ALTER TABLE projectms.participations
+	ADD
+		CONSTRAINT PK_participations
+		PRIMARY KEY (
+			user_id,
+			conversation_id
+		);
+
+/* 사용자 */
+CREATE TABLE projectms.users (
+	user_id VARCHAR2(50) NOT NULL, /* 사용자 ID */
+	user_name VARCHAR2(20) NOT NULL, /* 사용자 이름 */
+	position_code NUMBER NOT NULL, /* 직급코드 */
+	team_code NUMBER NOT NULL, /* 팀 코드 */
+	user_email VARCHAR2(50) NOT NULL, /* 사용자 이메일 */
+	user_phone VARCHAR2(50) NOT NULL, /* 사용자 전화번호 */
+	user_regitdate TIMESTAMP /* 등록일 */
+);
+
+COMMENT ON TABLE projectms.users IS '사용자';
+
+COMMENT ON COLUMN projectms.users.user_id IS '사용자 ID';
+
+COMMENT ON COLUMN projectms.users.user_name IS '사용자 이름';
+
+COMMENT ON COLUMN projectms.users.position_code IS '직급코드';
+
+COMMENT ON COLUMN projectms.users.team_code IS '팀 코드';
+
+COMMENT ON COLUMN projectms.users.user_email IS '사용자 이메일';
+
+COMMENT ON COLUMN projectms.users.user_phone IS '사용자 전화번호';
+
+COMMENT ON COLUMN projectms.users.user_regitdate IS '등록일';
+
+CREATE UNIQUE INDEX projectms.PK_users
+	ON projectms.users (
+		user_id ASC
+	);
+
+ALTER TABLE projectms.users
+	ADD
+		CONSTRAINT PK_users
+		PRIMARY KEY (
+			user_id
+		);
+
+/* 직책 */
+CREATE TABLE projectms.dutys (
+	duty_code VARCHAR2(30) NOT NULL, /* 직책코드 */
+	duty_name VARCHAR2(50) NOT NULL /* 직책 이름 */
+);
+
+COMMENT ON TABLE projectms.dutys IS '직책';
+
+COMMENT ON COLUMN projectms.dutys.duty_code IS '직책코드';
+
+COMMENT ON COLUMN projectms.dutys.duty_name IS '직책 이름';
+
+CREATE UNIQUE INDEX projectms.PK_dutys
+	ON projectms.dutys (
+		duty_code ASC
+	);
+
+ALTER TABLE projectms.dutys
+	ADD
+		CONSTRAINT PK_dutys
+		PRIMARY KEY (
+			duty_code
+		);
+
+/* 직급 */
+CREATE TABLE projectms.positions (
+	position_code NUMBER NOT NULL, /* 직급코드 */
+	position_name VARCHAR2(20) NOT NULL /* 직급이름 */
+);
+
+COMMENT ON TABLE projectms.positions IS '직급';
+
+COMMENT ON COLUMN projectms.positions.position_code IS '직급코드';
+
+COMMENT ON COLUMN projectms.positions.position_name IS '직급이름';
+
+CREATE UNIQUE INDEX projectms.PK_positions
+	ON projectms.positions (
+		position_code ASC
+	);
+
+ALTER TABLE projectms.positions
+	ADD
+		CONSTRAINT PK_positions
+		PRIMARY KEY (
+			position_code
+		);
+
+/* 부서 */
+CREATE TABLE projectms.teams (
+	team_code NUMBER NOT NULL, /* 팀 코드 */
+	team_name VARCHAR2(20) NOT NULL, /* 팀 이름 */
+	team_upper VARCHAR2(20), /* 상위 팀 */
+	team_seq NUMBER, /* 팀 순서 */
+	team_use VARCHAR2(5) NOT NULL /* 사용여부 */
+);
+
+COMMENT ON TABLE projectms.teams IS '부서';
+
+COMMENT ON COLUMN projectms.teams.team_code IS '팀 코드';
+
+COMMENT ON COLUMN projectms.teams.team_name IS '팀 이름';
+
+COMMENT ON COLUMN projectms.teams.team_upper IS '상위 팀';
+
+COMMENT ON COLUMN projectms.teams.team_seq IS '팀 순서';
+
+COMMENT ON COLUMN projectms.teams.team_use IS '사용여부';
+
+CREATE UNIQUE INDEX projectms.PK_teams
+	ON projectms.teams (
+		team_code ASC
+	);
+
+ALTER TABLE projectms.teams
+	ADD
+		CONSTRAINT PK_teams
+		PRIMARY KEY (
+			team_code
+		);
+
+/* 프로젝트 상태 */
+CREATE TABLE projectms.project_status (
+	project_statusCode VARCHAR2(30) NOT NULL, /* 프로젝트 상태 코드 */
+	project_status VARCHAR2(50) NOT NULL /* 프로젝트 상태 */
+);
+
+COMMENT ON TABLE projectms.project_status IS '프로젝트 상태';
+
+COMMENT ON COLUMN projectms.project_status.project_statusCode IS '프로젝트 상태 코드';
+
+COMMENT ON COLUMN projectms.project_status.project_status IS '프로젝트 상태';
+
+CREATE UNIQUE INDEX projectms.PK_project_status
+	ON projectms.project_status (
+		project_statusCode ASC
+	);
+
+ALTER TABLE projectms.project_status
+	ADD
+		CONSTRAINT PK_project_status
+		PRIMARY KEY (
+			project_statusCode
+		);
+
+/* 작업 담당 */
+CREATE TABLE projectms.project_task_managers (
+	task_manager_code VARCHAR2(30) NOT NULL, /* 작업 담당 코드 */
+	task_manager_id VARCHAR2(50), /* 작업 담당자 아이디 */
+	task_code VARCHAR2(30) /* 작업 코드 */
+);
+
+COMMENT ON TABLE projectms.project_task_managers IS '작업 담당';
+
+COMMENT ON COLUMN projectms.project_task_managers.task_manager_code IS '작업 담당 코드';
+
+COMMENT ON COLUMN projectms.project_task_managers.task_manager_id IS '작업 담당자 아이디';
+
+COMMENT ON COLUMN projectms.project_task_managers.task_code IS '작업 코드';
+
+CREATE UNIQUE INDEX projectms.PK_project_task_managers
+	ON projectms.project_task_managers (
+		task_manager_code ASC
+	);
+
+ALTER TABLE projectms.project_task_managers
+	ADD
+		CONSTRAINT PK_project_task_managers
+		PRIMARY KEY (
+			task_manager_code
+		);
+
+/* 프로젝트 서브 관리자 */
+CREATE TABLE projectms.project_submanagers (
+	subgmanager_code VARCHAR2(30) NOT NULL, /* 서브 관리자 코드 */
+	submanager_id VARCHAR2(50) NOT NULL, /* 사용자 ID */
+	project_code VARCHAR2(50) NOT NULL /* 프로젝트 코드 */
+);
+
+COMMENT ON TABLE projectms.project_submanagers IS '프로젝트 서브 관리자';
+
+COMMENT ON COLUMN projectms.project_submanagers.subgmanager_code IS '서브 관리자 코드';
+
+COMMENT ON COLUMN projectms.project_submanagers.submanager_id IS '사용자 ID';
+
+COMMENT ON COLUMN projectms.project_submanagers.project_code IS '프로젝트 코드';
+
+CREATE UNIQUE INDEX projectms.PK_project_submanagers
+	ON projectms.project_submanagers (
+		subgmanager_code ASC
+	);
+
+ALTER TABLE projectms.project_submanagers
+	ADD
+		CONSTRAINT PK_project_submanagers
+		PRIMARY KEY (
+			subgmanager_code
+		);
+
+/* 결재첨부파일 */
+CREATE TABLE projectms.approvalFile (
+	ap_file_no NUMBER NOT NULL, /* 첨부파일번호 */
+	ap_no NUMBER NOT NULL, /* 결재문서 번호 */
+	ap_file_name VARCHAR2(200), /* 파일명 */
+	ap_file_path VARCHAR2(200), /* 파일저장경로 */
+	ap_file_type CHAR(1) /* 파일타입 */
+);
+
+COMMENT ON TABLE projectms.approvalFile IS '결재첨부파일';
+
+COMMENT ON COLUMN projectms.approvalFile.ap_file_no IS '첨부파일번호';
+
+COMMENT ON COLUMN projectms.approvalFile.ap_no IS '결재문서 번호';
+
+COMMENT ON COLUMN projectms.approvalFile.ap_file_name IS '파일명';
+
+COMMENT ON COLUMN projectms.approvalFile.ap_file_path IS '파일저장경로';
+
+COMMENT ON COLUMN projectms.approvalFile.ap_file_type IS '파일타입';
+
+CREATE UNIQUE INDEX projectms.PK_approvalFile
+	ON projectms.approvalFile (
+		ap_file_no ASC
+	);
+
+ALTER TABLE projectms.approvalFile
+	ADD
+		CONSTRAINT PK_approvalFile
+		PRIMARY KEY (
+			ap_file_no
+		);
+
+/* 결재선 */
+CREATE TABLE projectms.approvalPath (
+	ap_path_no NUMBER NOT NULL, /* 결재선 번호 */
+	ap_path1 VARCHAR2(200) NOT NULL, /* 1차 결재자 */
+	ap_path2 VARCHAR2(200), /* 2차 결재자 */
+	ap_path3 VARCHAR2(200) /* 3차 결재자 */
+);
+
+COMMENT ON TABLE projectms.approvalPath IS '결재선';
+
+COMMENT ON COLUMN projectms.approvalPath.ap_path_no IS '결재선 번호';
+
+COMMENT ON COLUMN projectms.approvalPath.ap_path1 IS '1차 결재자';
+
+COMMENT ON COLUMN projectms.approvalPath.ap_path2 IS '2차 결재자';
+
+COMMENT ON COLUMN projectms.approvalPath.ap_path3 IS '3차 결재자';
+
+CREATE UNIQUE INDEX projectms.PK_approvalPath
+	ON projectms.approvalPath (
+		ap_path_no ASC
+	);
+
+ALTER TABLE projectms.approvalPath
+	ADD
+		CONSTRAINT PK_approvalPath
+		PRIMARY KEY (
+			ap_path_no
+		);
+
+/* 결재문서 */
+CREATE TABLE projectms.approvalDoc (
+	ap_no NUMBER NOT NULL, /* 결재문서 번호 */
+	ap_doc_no NUMBER NOT NULL, /* 문서양식번호 */
+	user_id VARCHAR2(50), /* 기안자 */
+	ap_title VARCHAR2(100) NOT NULL, /* 제목 */
+	ap_content VARCHAR2(3000) NOT NULL, /* 문서 내용 */
+	ap_status CHAR(1) NOT NULL, /* 문서 상태 */
+	ap_step NUMBER NOT NULL, /* 현재결재단계 */
+	ap_signpath VARCHAR2(100) NOT NULL, /* 결재경로문자열 */
+	ap_create_date TIMESTAMP NOT NULL, /* 작성일자 */
+	ap_modify_date TIMESTAMP, /* 수정일자 */
+	ap_end_date TIMESTAMP /* 완료일자 */
+);
+
+COMMENT ON TABLE projectms.approvalDoc IS '결재문서';
+
+COMMENT ON COLUMN projectms.approvalDoc.ap_no IS '결재문서 번호';
+
+COMMENT ON COLUMN projectms.approvalDoc.ap_doc_no IS '문서양식번호';
+
+COMMENT ON COLUMN projectms.approvalDoc.user_id IS '기안자';
+
+COMMENT ON COLUMN projectms.approvalDoc.ap_title IS '제목';
+
+COMMENT ON COLUMN projectms.approvalDoc.ap_content IS '문서 내용';
+
+COMMENT ON COLUMN projectms.approvalDoc.ap_status IS '문서 상태';
+
+COMMENT ON COLUMN projectms.approvalDoc.ap_step IS '현재결재단계';
+
+COMMENT ON COLUMN projectms.approvalDoc.ap_signpath IS '결재경로문자열';
+
+COMMENT ON COLUMN projectms.approvalDoc.ap_create_date IS '작성일자';
+
+COMMENT ON COLUMN projectms.approvalDoc.ap_modify_date IS '수정일자';
+
+COMMENT ON COLUMN projectms.approvalDoc.ap_end_date IS '완료일자';
+
+CREATE UNIQUE INDEX projectms.PK_approvalDoc
+	ON projectms.approvalDoc (
+		ap_no ASC
+	);
+
+ALTER TABLE projectms.approvalDoc
+	ADD
+		CONSTRAINT PK_approvalDoc
+		PRIMARY KEY (
+			ap_no
+		);
+
+/* 결재문서 양식 */
+CREATE TABLE projectms.approvalForm (
+	 ap_doc_no NUMBER NOT NULL, /* 문서양식번호 */
+	ap_path_no NUMBER, /* 결재선 번호 */
+	 ap_doc_name VARCHAR2(200) NOT NULL, /* 문서양식명 */
+	 ap_doc_form VARCHAR2(3000) NOT NULL /* 문서양식내용 */
+);
+
+COMMENT ON TABLE projectms.approvalForm IS '결재문서 양식';
+
+COMMENT ON COLUMN projectms.approvalForm. ap_doc_no IS '문서양식번호';
+
+COMMENT ON COLUMN projectms.approvalForm.ap_path_no IS '결재선 번호';
+
+COMMENT ON COLUMN projectms.approvalForm. ap_doc_name IS '문서양식명';
+
+COMMENT ON COLUMN projectms.approvalForm. ap_doc_form IS '문서양식내용';
+
+CREATE UNIQUE INDEX projectms.PK_approvalForm
+	ON projectms.approvalForm (
+		 ap_doc_no ASC
+	);
+
+ALTER TABLE projectms.approvalForm
+	ADD
+		CONSTRAINT PK_approvalForm
+		PRIMARY KEY (
+			 ap_doc_no
+		);
+
+/* 결재 */
+CREATE TABLE projectms.approval (
+	ap_process_no NUMBER NOT NULL, /* 결재 번호 */
+	ap_no NUMBER NOT NULL, /* 결재문서 번호 */
+	user_id VARCHAR2(50), /* 결재자 */
+	duty_code VARCHAR2(30) NOT NULL, /* 직책 */
+	ap_process_step NUMBER NOT NULL, /* 결재 단계 */
+	ap_process_result CHAR(1) NOT NULL, /* 결재 처리결과 */
+	ap_process_comment VARCHAR2(500), /* 결재 의견 */
+	ap_process_receivedate TIMESTAMP NOT NULL, /* 결재수신일자 */
+	ap_process_signdate TIMESTAMP NOT NULL /* 결재처리일자 */
+);
+
+COMMENT ON TABLE projectms.approval IS '결재';
+
+COMMENT ON COLUMN projectms.approval.ap_process_no IS '결재 번호';
+
+COMMENT ON COLUMN projectms.approval.ap_no IS '결재문서 번호';
+
+COMMENT ON COLUMN projectms.approval.user_id IS '결재자';
+
+COMMENT ON COLUMN projectms.approval.duty_code IS '직책';
+
+COMMENT ON COLUMN projectms.approval.ap_process_step IS '결재 단계';
+
+COMMENT ON COLUMN projectms.approval.ap_process_result IS '결재 처리결과';
+
+COMMENT ON COLUMN projectms.approval.ap_process_comment IS '결재 의견';
+
+COMMENT ON COLUMN projectms.approval.ap_process_receivedate IS '결재수신일자';
+
+COMMENT ON COLUMN projectms.approval.ap_process_signdate IS '결재처리일자';
+
+CREATE UNIQUE INDEX projectms.PK_approval
+	ON projectms.approval (
+		ap_process_no ASC
+	);
+
+ALTER TABLE projectms.approval
+	ADD
+		CONSTRAINT PK_approval
+		PRIMARY KEY (
+			ap_process_no
+		);
+
+/* 결재참조자 */
+CREATE TABLE projectms.approvalReferrer (
+	ap_no NUMBER NOT NULL, /* 결재문서 번호 */
+	user_id VARCHAR2(50) NOT NULL /* 참조자 */
+);
+
+COMMENT ON TABLE projectms.approvalReferrer IS '결재참조자';
+
+COMMENT ON COLUMN projectms.approvalReferrer.ap_no IS '결재문서 번호';
+
+COMMENT ON COLUMN projectms.approvalReferrer.user_id IS '참조자';
+
+CREATE UNIQUE INDEX projectms.PK_approvalReferrer
+	ON projectms.approvalReferrer (
+		ap_no ASC,
+		user_id ASC
+	);
+
+ALTER TABLE projectms.approvalReferrer
+	ADD
+		CONSTRAINT PK_approvalReferrer
+		PRIMARY KEY (
+			ap_no,
+			user_id
+		);
+
+/* event_types */
+CREATE TABLE projectms.event_types (
+	event_type_id VARCHAR2(30) NOT NULL, /* event_type_id */
+	event_type VARCHAR2(50) NOT NULL /* event_type */
+);
+
+COMMENT ON TABLE projectms.event_types IS 'event_types';
+
+COMMENT ON COLUMN projectms.event_types.event_type_id IS 'event_type_id';
+
+COMMENT ON COLUMN projectms.event_types.event_type IS 'event_type';
+
+CREATE UNIQUE INDEX projectms.PK_event_types
+	ON projectms.event_types (
+		event_type_id ASC
+	);
+
+ALTER TABLE projectms.event_types
+	ADD
+		CONSTRAINT PK_event_types
+		PRIMARY KEY (
+			event_type_id
+		);
+
+/* Event Table */
+CREATE TABLE projectms.events (
+	event_id VARCHAR2(50) NOT NULL, /* event_id */
+	event_title VARCHAR2(100) NOT NULL, /* event_title */
+	event_start_date DATE NOT NULL, /* start_date */
+	event_finish_date DATE NOT NULL, /* finish_date */
+	event_description VARCHAR2(500), /* description */
+	event_all_day CHAR(1), /* all_day_event */
+	event_place VARCHAR2(50), /* plase */
+	event_type_id VARCHAR2(30) NOT NULL, /* event_typeCode */
+	project_code VARCHAR2(50) /* 프로젝트 코드 */
+);
+
+COMMENT ON TABLE projectms.events IS 'Event Table';
+
+COMMENT ON COLUMN projectms.events.event_id IS 'event_id';
+
+COMMENT ON COLUMN projectms.events.event_title IS 'event_title';
+
+COMMENT ON COLUMN projectms.events.event_start_date IS 'start_date';
+
+COMMENT ON COLUMN projectms.events.event_finish_date IS 'finish_date';
+
+COMMENT ON COLUMN projectms.events.event_description IS 'description';
+
+COMMENT ON COLUMN projectms.events.event_all_day IS 'all_day_event';
+
+COMMENT ON COLUMN projectms.events.event_place IS 'plase';
+
+COMMENT ON COLUMN projectms.events.event_type_id IS 'event_typeCode';
+
+COMMENT ON COLUMN projectms.events.project_code IS '프로젝트 코드';
+
+CREATE UNIQUE INDEX projectms.PK_events
+	ON projectms.events (
+		event_id ASC
+	);
+
+ALTER TABLE projectms.events
+	ADD
+		CONSTRAINT PK_events
+		PRIMARY KEY (
+			event_id
+		);
+
+/* Group_event */
+CREATE TABLE projectms.event_groups (
+	event_id VARCHAR2(50) NOT NULL, /* event_id */
+	user_id VARCHAR2(50) NOT NULL /* user_id */
+);
+
+COMMENT ON TABLE projectms.event_groups IS 'Group_event';
+
+COMMENT ON COLUMN projectms.event_groups.event_id IS 'event_id';
+
+COMMENT ON COLUMN projectms.event_groups.user_id IS 'user_id';
+
+CREATE UNIQUE INDEX projectms.PK_event_groups
+	ON projectms.event_groups (
+		event_id ASC,
+		user_id ASC
+	);
+
+ALTER TABLE projectms.event_groups
+	ADD
+		CONSTRAINT PK_event_groups
+		PRIMARY KEY (
+			event_id,
+			user_id
+		);
+
+ALTER TABLE projectms.projects
+	ADD
+		CONSTRAINT FK_project_types_TO_projects
+		FOREIGN KEY (
+			project_typeCode
+		)
+		REFERENCES projectms.project_types (
+			project_typeCode
+		);
+
+ALTER TABLE projectms.projects
+	ADD
+		CONSTRAINT FK_project_status_TO_projects
+		FOREIGN KEY (
+			project_statusCode
+		)
+		REFERENCES projectms.project_status (
+			project_statusCode
+		);
+
+ALTER TABLE projectms.project_tasks
+	ADD
+		CONSTRAINT FK_grps_TO_prjct_tsks
+		FOREIGN KEY (
+			taskGroup_code
+		)
+		REFERENCES projectms.project_task_groups (
+			taskGroup_code
+		);
+
+ALTER TABLE projectms.project_tasks
+	ADD
+		CONSTRAINT FK_prjct_sts_TO_prjct_tsks
+		FOREIGN KEY (
+			task_status_code
+		)
+		REFERENCES projectms.project_task_status (
+			task_status_code
+		);
+
+ALTER TABLE projectms.project_task_groups
+	ADD
+		CONSTRAINT FK_prjcts_TO_prjct_tsk_grps
+		FOREIGN KEY (
+			project_code
+		)
+		REFERENCES projectms.projects (
+			project_code
+		);
+
+ALTER TABLE projectms.project_issues
+	ADD
+		CONSTRAINT FK_prjct_is_tps_TO_prjct_is
+		FOREIGN KEY (
+			issue_type_code
+		)
+		REFERENCES projectms.project_issue_types (
+			issue_type_code
+		);
+
+ALTER TABLE projectms.project_issues
+	ADD
+		CONSTRAINT FK_prjct_tasks_TO_prjct_is
+		FOREIGN KEY (
+			task_code
+		)
+		REFERENCES projectms.project_tasks (
+			task_code
+		);
+
+ALTER TABLE projectms.project_members
+	ADD
+		CONSTRAINT FK_projects_TO_project_members
+		FOREIGN KEY (
+			project_code
+		)
+		REFERENCES projectms.projects (
+			project_code
+		);
+
+ALTER TABLE projectms.project_members
+	ADD
+		CONSTRAINT FK_users_TO_project_members
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES projectms.users (
+			user_id
+		);
+
+ALTER TABLE projectms.project_members
+	ADD
+		CONSTRAINT FK_dutys_TO_project_members
+		FOREIGN KEY (
+			duty_code
+		)
+		REFERENCES projectms.dutys (
+			duty_code
+		);
+
+ALTER TABLE projectms.project_outputs
+	ADD
+		CONSTRAINT FK_tps_TO_prjct_otpts
+		FOREIGN KEY (
+			output_type_code
+		)
+		REFERENCES projectms.project_output_types (
+			output_type_code
+		);
+
+ALTER TABLE projectms.project_outputs
+	ADD
+		CONSTRAINT FK_projects_TO_project_outputs
+		FOREIGN KEY (
+			project_code
+		)
+		REFERENCES projectms.projects (
+			project_code
+		);
+
+ALTER TABLE projectms.messages
+	ADD
+		CONSTRAINT FK_chatrooms_TO_messages
+		FOREIGN KEY (
+			conversation_id
+		)
+		REFERENCES projectms.chatrooms (
+			conversation_id
+		);
+
+ALTER TABLE projectms.messages
+	ADD
+		CONSTRAINT FK_users_TO_messages
+		FOREIGN KEY (
+			author_id
+		)
+		REFERENCES projectms.users (
+			user_id
+		);
+
+ALTER TABLE projectms.notes
+	ADD
+		CONSTRAINT FK_users_TO_notes2
+		FOREIGN KEY (
+			author_id
+		)
+		REFERENCES projectms.users (
+			user_id
+		);
+
+ALTER TABLE projectms.notes
+	ADD
+		CONSTRAINT FK_users_TO_notes
+		FOREIGN KEY (
+			receiver_id
+		)
+		REFERENCES projectms.users (
+			user_id
+		);
+
+ALTER TABLE projectms.participations
+	ADD
+		CONSTRAINT FK_chatrooms_TO_participations
+		FOREIGN KEY (
+			conversation_id
+		)
+		REFERENCES projectms.chatrooms (
+			conversation_id
+		);
+
+ALTER TABLE projectms.participations
+	ADD
+		CONSTRAINT FK_users_TO_participations
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES projectms.users (
+			user_id
+		);
+
+ALTER TABLE projectms.users
+	ADD
+		CONSTRAINT FK_positions_TO_users
+		FOREIGN KEY (
+			position_code
+		)
+		REFERENCES projectms.positions (
+			position_code
+		);
+
+ALTER TABLE projectms.users
+	ADD
+		CONSTRAINT FK_teams_TO_users
+		FOREIGN KEY (
+			team_code
+		)
+		REFERENCES projectms.teams (
+			team_code
+		);
+
+ALTER TABLE projectms.project_task_managers
+	ADD
+		CONSTRAINT FK_tsks_TO_prjct_mngrs
+		FOREIGN KEY (
+			task_code
+		)
+		REFERENCES projectms.project_tasks (
+			task_code
+		);
+
+ALTER TABLE projectms.project_submanagers
+	ADD
+		CONSTRAINT FK_prjcts_TO_prjct_sbmngrs
+		FOREIGN KEY (
+			project_code
+		)
+		REFERENCES projectms.projects (
+			project_code
+		);
+
+ALTER TABLE projectms.approvalFile
+	ADD
+		CONSTRAINT FK_approvalDoc_TO_approvalFile
+		FOREIGN KEY (
+			ap_no
+		)
+		REFERENCES projectms.approvalDoc (
+			ap_no
+		);
+
+ALTER TABLE projectms.approvalDoc
+	ADD
+		CONSTRAINT FK_approvalForm_TO_approvalDoc
+		FOREIGN KEY (
+			ap_doc_no
+		)
+		REFERENCES projectms.approvalForm (
+			 ap_doc_no
+		);
+
+ALTER TABLE projectms.approvalDoc
+	ADD
+		CONSTRAINT FK_users_TO_approvalDoc
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES projectms.users (
+			user_id
+		);
+
+ALTER TABLE projectms.approvalForm
+	ADD
+		CONSTRAINT FK_approvalPath_TO_aprvlFrm
+		FOREIGN KEY (
+			ap_path_no
+		)
+		REFERENCES projectms.approvalPath (
+			ap_path_no
+		);
+
+ALTER TABLE projectms.approval
+	ADD
+		CONSTRAINT FK_approvalDoc_TO_approval
+		FOREIGN KEY (
+			ap_no
+		)
+		REFERENCES projectms.approvalDoc (
+			ap_no
+		);
+
+ALTER TABLE projectms.approval
+	ADD
+		CONSTRAINT FK_users_TO_approval
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES projectms.users (
+			user_id
+		);
+
+ALTER TABLE projectms.approvalReferrer
+	ADD
+		CONSTRAINT FK_approvalDoc_TO_aprvlRfr
+		FOREIGN KEY (
+			ap_no
+		)
+		REFERENCES projectms.approvalDoc (
+			ap_no
+		);
+
+ALTER TABLE projectms.approvalReferrer
+	ADD
+		CONSTRAINT FK_users_TO_approvalReferrer
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES projectms.users (
+			user_id
+		);
+
+ALTER TABLE projectms.events
+	ADD
+		CONSTRAINT FK_event_types_TO_events
+		FOREIGN KEY (
+			event_type_id
+		)
+		REFERENCES projectms.event_types (
+			event_type_id
+		);
+
+ALTER TABLE projectms.events
+	ADD
+		CONSTRAINT FK_projects_TO_events
+		FOREIGN KEY (
+			project_code
+		)
+		REFERENCES projectms.projects (
+			project_code
+		);
+
+ALTER TABLE projectms.event_groups
+	ADD
+		CONSTRAINT FK_events_TO_event_groups
+		FOREIGN KEY (
+			event_id
+		)
+		REFERENCES projectms.events (
+			event_id
+		);
+
+ALTER TABLE projectms.event_groups
+	ADD
+		CONSTRAINT FK_users_TO_event_groups
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES projectms.users (
+			user_id
+		);

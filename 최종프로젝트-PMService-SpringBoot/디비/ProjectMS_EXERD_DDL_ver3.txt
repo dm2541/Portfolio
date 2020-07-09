@@ -1,0 +1,1588 @@
+ALTER TABLE projects
+	DROP
+		CONSTRAINT FK_project_types_TO_projects
+		CASCADE;
+
+ALTER TABLE projects
+	DROP
+		CONSTRAINT FK_project_status_TO_projects
+		CASCADE;
+
+ALTER TABLE project_tasks
+	DROP
+		CONSTRAINT FK_grps_TO_prjct_tsks
+		CASCADE;
+
+ALTER TABLE project_tasks
+	DROP
+		CONSTRAINT FK_prjct_sts_TO_prjct_tsks
+		CASCADE;
+
+ALTER TABLE project_task_groups
+	DROP
+		CONSTRAINT FK_prjcts_TO_prjct_tsk_grps
+		CASCADE;
+
+ALTER TABLE project_issues
+	DROP
+		CONSTRAINT FK_prjct_is_tps_TO_prjct_is
+		CASCADE;
+
+ALTER TABLE project_issues
+	DROP
+		CONSTRAINT FK_prjct_tasks_TO_prjct_is
+		CASCADE;
+
+ALTER TABLE project_members
+	DROP
+		CONSTRAINT FK_projects_TO_project_members
+		CASCADE;
+
+ALTER TABLE project_members
+	DROP
+		CONSTRAINT FK_users_TO_project_members
+		CASCADE;
+
+ALTER TABLE project_members
+	DROP
+		CONSTRAINT FK_dutys_TO_project_members
+		CASCADE;
+
+ALTER TABLE project_outputs
+	DROP
+		CONSTRAINT FK_tps_TO_prjct_otpts
+		CASCADE;
+
+ALTER TABLE project_outputs
+	DROP
+		CONSTRAINT FK_project_tasks_TO_project_outputs
+		CASCADE;
+
+ALTER TABLE messages
+	DROP
+		CONSTRAINT FK_chatrooms_TO_messages
+		CASCADE;
+
+ALTER TABLE messages
+	DROP
+		CONSTRAINT FK_users_TO_messages
+		CASCADE;
+
+ALTER TABLE notes
+	DROP
+		CONSTRAINT FK_users_TO_notes2
+		CASCADE;
+
+ALTER TABLE notes
+	DROP
+		CONSTRAINT FK_users_TO_notes
+		CASCADE;
+
+ALTER TABLE participations
+	DROP
+		CONSTRAINT FK_chatrooms_TO_participations
+		CASCADE;
+
+ALTER TABLE participations
+	DROP
+		CONSTRAINT FK_users_TO_participations
+		CASCADE;
+
+ALTER TABLE users
+	DROP
+		CONSTRAINT FK_positions_TO_users
+		CASCADE;
+
+ALTER TABLE users
+	DROP
+		CONSTRAINT FK_teams_TO_users
+		CASCADE;
+
+ALTER TABLE project_task_managers
+	DROP
+		CONSTRAINT FK_tsks_TO_prjct_mngrs
+		CASCADE;
+
+ALTER TABLE project_submanagers
+	DROP
+		CONSTRAINT FK_prjcts_TO_prjct_sbmngrs
+		CASCADE;
+
+ALTER TABLE approvalFile
+	DROP
+		CONSTRAINT FK_approvalDoc_TO_approvalFile
+		CASCADE;
+
+ALTER TABLE approvalDoc
+	DROP
+		CONSTRAINT FK_approvalForm_TO_approvalDoc
+		CASCADE;
+
+ALTER TABLE approvalDoc
+	DROP
+		CONSTRAINT FK_users_TO_approvalDoc
+		CASCADE;
+
+ALTER TABLE approvalForm
+	DROP
+		CONSTRAINT FK_approvalPath_TO_aprvlFrm
+		CASCADE;
+
+ALTER TABLE approval
+	DROP
+		CONSTRAINT FK_approvalDoc_TO_approval
+		CASCADE;
+
+ALTER TABLE approval
+	DROP
+		CONSTRAINT FK_users_TO_approval
+		CASCADE;
+
+ALTER TABLE approvalReferrer
+	DROP
+		CONSTRAINT FK_approvalDoc_TO_aprvlRfr
+		CASCADE;
+
+ALTER TABLE approvalReferrer
+	DROP
+		CONSTRAINT FK_users_TO_approvalReferrer
+		CASCADE;
+
+ALTER TABLE events
+	DROP
+		CONSTRAINT FK_event_types_TO_events
+		CASCADE;
+
+ALTER TABLE events
+	DROP
+		CONSTRAINT FK_projects_TO_events
+		CASCADE;
+
+ALTER TABLE event_groups
+	DROP
+		CONSTRAINT FK_events_TO_event_groups
+		CASCADE;
+
+ALTER TABLE event_groups
+	DROP
+		CONSTRAINT FK_users_TO_event_groups
+		CASCADE;
+
+ALTER TABLE issue_files
+	DROP
+		CONSTRAINT FK_project_issues_TO_issue_files
+		CASCADE;
+
+ALTER TABLE action_files
+	DROP
+		CONSTRAINT FK_project_issues_TO_action_files
+		CASCADE;
+
+ALTER TABLE projects
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_tasks
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_task_groups
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_types
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_issues
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_members
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_outputs
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_output_types
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_issue_types
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_task_status
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE messages
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE notes
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE chatrooms
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE participations
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE users
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE dutys
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE positions
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE teams
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_status
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_task_managers
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE project_submanagers
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE approvalFile
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE approvalPath
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE approvalDoc
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE approvalForm
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE approval
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE approvalReferrer
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE event_types
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE events
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE event_groups
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE issue_files
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE action_files
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+DROP INDEX PK_projects;
+
+DROP INDEX PK_project_tasks;
+
+DROP INDEX PK_project_task_groups;
+
+DROP INDEX PK_project_types;
+
+DROP INDEX PK_project_issues;
+
+DROP INDEX PK_project_members;
+
+DROP INDEX PK_project_outputs;
+
+DROP INDEX PK_project_output_types;
+
+DROP INDEX PK_project_issue_types;
+
+DROP INDEX PK_project_task_status;
+
+DROP INDEX PK_messages;
+
+DROP INDEX PK_notes;
+
+DROP INDEX PK_chatrooms;
+
+DROP INDEX PK_participations;
+
+DROP INDEX PK_users;
+
+DROP INDEX PK_dutys;
+
+DROP INDEX PK_positions;
+
+DROP INDEX PK_teams;
+
+DROP INDEX PK_project_status;
+
+DROP INDEX PK_project_task_managers;
+
+DROP INDEX PK_project_submanagers;
+
+DROP INDEX PK_approvalFile;
+
+DROP INDEX PK_approvalPath;
+
+DROP INDEX PK_approvalDoc;
+
+DROP INDEX PK_approvalForm;
+
+DROP INDEX PK_approval;
+
+DROP INDEX PK_approvalReferrer;
+
+DROP INDEX PK_event_types;
+
+DROP INDEX PK_events;
+
+DROP INDEX PK_event_groups;
+
+DROP INDEX PK_issue_files;
+
+DROP INDEX PK_action_files;
+
+/* 프로젝트 */
+DROP TABLE projects 
+	CASCADE CONSTRAINTS;
+
+/* 프로젝트 작업 */
+DROP TABLE project_tasks 
+	CASCADE CONSTRAINTS;
+
+/* 프로젝트 작업 그룹 */
+DROP TABLE project_task_groups 
+	CASCADE CONSTRAINTS;
+
+/* 개발 형태 */
+DROP TABLE project_types 
+	CASCADE CONSTRAINTS;
+
+/* 프로젝트 이슈 */
+DROP TABLE project_issues 
+	CASCADE CONSTRAINTS;
+
+/* 프로젝트 멤버 */
+DROP TABLE project_members 
+	CASCADE CONSTRAINTS;
+
+/* 프로젝트 산출물 */
+DROP TABLE project_outputs 
+	CASCADE CONSTRAINTS;
+
+/* 프로젝트 산출물 유형 */
+DROP TABLE project_output_types 
+	CASCADE CONSTRAINTS;
+
+/* 이슈 형태 */
+DROP TABLE project_issue_types 
+	CASCADE CONSTRAINTS;
+
+/* 작업 상태 */
+DROP TABLE project_task_status 
+	CASCADE CONSTRAINTS;
+
+/* 메시지 */
+DROP TABLE messages 
+	CASCADE CONSTRAINTS;
+
+/* 쪽지 */
+DROP TABLE notes 
+	CASCADE CONSTRAINTS;
+
+/* 대화방 */
+DROP TABLE chatrooms 
+	CASCADE CONSTRAINTS;
+
+/* 참여 */
+DROP TABLE participations 
+	CASCADE CONSTRAINTS;
+
+/* 사용자 */
+DROP TABLE users 
+	CASCADE CONSTRAINTS;
+
+/* 직책 */
+DROP TABLE dutys 
+	CASCADE CONSTRAINTS;
+
+/* 직급 */
+DROP TABLE positions 
+	CASCADE CONSTRAINTS;
+
+/* 부서 */
+DROP TABLE teams 
+	CASCADE CONSTRAINTS;
+
+/* 프로젝트 상태 */
+DROP TABLE project_status 
+	CASCADE CONSTRAINTS;
+
+/* 작업 담당 */
+DROP TABLE project_task_managers 
+	CASCADE CONSTRAINTS;
+
+/* 프로젝트 서브 관리자 */
+DROP TABLE project_submanagers 
+	CASCADE CONSTRAINTS;
+
+/* 결재첨부파일 */
+DROP TABLE approvalFile 
+	CASCADE CONSTRAINTS;
+
+/* 결재선 */
+DROP TABLE approvalPath 
+	CASCADE CONSTRAINTS;
+
+/* 결재문서 */
+DROP TABLE approvalDoc 
+	CASCADE CONSTRAINTS;
+
+/* 결재문서 양식 */
+DROP TABLE approvalForm 
+	CASCADE CONSTRAINTS;
+
+/* 결재 */
+DROP TABLE approval 
+	CASCADE CONSTRAINTS;
+
+/* 결재참조자 */
+DROP TABLE approvalReferrer 
+	CASCADE CONSTRAINTS;
+
+/* event_types */
+DROP TABLE event_types 
+	CASCADE CONSTRAINTS;
+
+/* Event Table */
+DROP TABLE events 
+	CASCADE CONSTRAINTS;
+
+/* Group_event */
+DROP TABLE event_groups 
+	CASCADE CONSTRAINTS;
+
+/* 이슈파일 */
+DROP TABLE issue_files 
+	CASCADE CONSTRAINTS;
+
+/* 조치파일 */
+DROP TABLE action_files 
+	CASCADE CONSTRAINTS;
+
+/* 프로젝트 */
+CREATE TABLE projects (
+	project_code VARCHAR2(50) NOT NULL, /* 프로젝트 코드 */
+	project_name VARCHAR2(100) NOT NULL, /* 프로젝트 이름 */
+	project_subName VARCHAR2(10) NOT NULL, /* 프로젝트 약어 */
+	project_start DATE NOT NULL, /* 프로젝트 시작일 */
+	project_finish DATE NOT NULL, /* 프로젝트 종료일 */
+	project_pm VARCHAR2(50) NOT NULL, /* 프로젝트 관리자 아이디 */
+	project_pmo VARCHAR2(50), /* 프로젝트 PMO 아이디 */
+	project_description VARCHAR2(500), /* 프로젝트 설명 */
+	project_priority NUMBER, /* 프로젝트 우선순위 */
+	project_statusCode VARCHAR2(30), /* 프로젝트 상태 코드 */
+	project_typeCode VARCHAR2(30) NOT NULL /* 개발 형태 코드 */
+);
+
+CREATE UNIQUE INDEX PK_projects
+	ON projects (
+		project_code ASC
+	);
+
+ALTER TABLE projects
+	ADD
+		CONSTRAINT PK_projects
+		PRIMARY KEY (
+			project_code
+		);
+
+/* 프로젝트 작업 */
+CREATE TABLE project_tasks (
+	task_code VARCHAR2(30) NOT NULL, /* 작업 코드 */
+	task_name VARCHAR2(100) NOT NULL, /* 작업 이름 */
+	task_start DATE NOT NULL, /* 작업 시작일 */
+	task_finish DATE, /* 작업 종료일 */
+	task_description VARCHAR2(500), /* 작업 설명 */
+	taskGroup_code VARCHAR2(30), /* 그룹 코드 */
+	task_status_code VARCHAR2(30) /* 작업 상태 코드 */
+);
+
+CREATE UNIQUE INDEX PK_project_tasks
+	ON project_tasks (
+		task_code ASC
+	);
+
+ALTER TABLE project_tasks
+	ADD
+		CONSTRAINT PK_project_tasks
+		PRIMARY KEY (
+			task_code
+		);
+
+/* 프로젝트 작업 그룹 */
+CREATE TABLE project_task_groups (
+	taskGroup_code VARCHAR2(30) NOT NULL, /* 그룹 코드 */
+	taskGroup_name VARCHAR2(100) NOT NULL, /* 그룹 이름 */
+	taskGroup_description VARCHAR2(500) NOT NULL, /* 그룹 설명 */
+	project_code VARCHAR2(50) /* 프로젝트 코드 */
+);
+
+CREATE UNIQUE INDEX PK_project_task_groups
+	ON project_task_groups (
+		taskGroup_code ASC
+	);
+
+ALTER TABLE project_task_groups
+	ADD
+		CONSTRAINT PK_project_task_groups
+		PRIMARY KEY (
+			taskGroup_code
+		);
+
+/* 개발 형태 */
+CREATE TABLE project_types (
+	project_typeCode VARCHAR2(30) NOT NULL, /* 개발 형태 코드 */
+	project_type VARCHAR2(50) NOT NULL /* 개발 형태 */
+);
+
+CREATE UNIQUE INDEX PK_project_types
+	ON project_types (
+		project_typeCode ASC
+	);
+
+ALTER TABLE project_types
+	ADD
+		CONSTRAINT PK_project_types
+		PRIMARY KEY (
+			project_typeCode
+		);
+
+/* 프로젝트 이슈 */
+CREATE TABLE project_issues (
+	issue_code VARCHAR2(30) NOT NULL, /* 이슈 코드 */
+	issue_name VARCHAR2(100), /* 이슈명 */
+	issue_description VARCHAR2(500), /* 이슈 내용 */
+	issue_user_id VARCHAR2(50), /* 이슈 등록자 아이디 */
+	issue_date DATE, /* 이슈 등록일 */
+	issue_action_id VARCHAR2(50), /* 이슈 조치자 아이디 */
+	issue_action_date DATE, /* 이슈 조치 희망일 */
+	issue_type_code VARCHAR2(30), /* 이슈 형태 코드 */
+	task_code VARCHAR2(30) /* 작업 코드 */
+);
+
+CREATE UNIQUE INDEX PK_project_issues
+	ON project_issues (
+		issue_code ASC
+	);
+
+ALTER TABLE project_issues
+	ADD
+		CONSTRAINT PK_project_issues
+		PRIMARY KEY (
+			issue_code
+		);
+
+/* 프로젝트 멤버 */
+CREATE TABLE project_members (
+	project_joinCode VARCHAR2(30) NOT NULL, /* 프로젝트 참여 코드 */
+	project_code VARCHAR2(50) NOT NULL, /* 프로젝트 코드 */
+	user_id VARCHAR2(50) NOT NULL, /* 사용자 ID */
+	duty_code VARCHAR2(30) NOT NULL /* 직책코드 */
+);
+
+CREATE UNIQUE INDEX PK_project_members
+	ON project_members (
+		project_joinCode ASC
+	);
+
+ALTER TABLE project_members
+	ADD
+		CONSTRAINT PK_project_members
+		PRIMARY KEY (
+			project_joinCode
+		);
+
+/* 프로젝트 산출물 */
+CREATE TABLE project_outputs (
+	output_code VARCHAR2(30) NOT NULL, /* 산출물 코드 */
+	output_name VARCHAR2(100) NOT NULL, /* 산출물 이름 */
+	output_user VARCHAR2(50) NOT NULL, /* 산출물 등록자 아이디 */
+	output_date DATE, /* 산출물 등록일 */
+	output_path VARCHAR2(100), /* 산출물 경로 */
+	output_type_code VARCHAR2(30), /* 산출물 유형 */
+	task_code VARCHAR2(30) /* 작업 코드 */
+);
+
+CREATE UNIQUE INDEX PK_project_outputs
+	ON project_outputs (
+		output_code ASC
+	);
+
+ALTER TABLE project_outputs
+	ADD
+		CONSTRAINT PK_project_outputs
+		PRIMARY KEY (
+			output_code
+		);
+
+/* 프로젝트 산출물 유형 */
+CREATE TABLE project_output_types (
+	output_type_code VARCHAR2(30) NOT NULL, /* 산출물 유형 코드 */
+	output_type VARCHAR2(50) NOT NULL /* 산출물 유형 이름 */
+);
+
+CREATE UNIQUE INDEX PK_project_output_types
+	ON project_output_types (
+		output_type_code ASC
+	);
+
+ALTER TABLE project_output_types
+	ADD
+		CONSTRAINT PK_project_output_types
+		PRIMARY KEY (
+			output_type_code
+		);
+
+/* 이슈 형태 */
+CREATE TABLE project_issue_types (
+	issue_type_code VARCHAR2(30) NOT NULL, /* 이슈 형태 코드 */
+	issue_type VARCHAR2(20) NOT NULL /* 이슈 형태 */
+);
+
+CREATE UNIQUE INDEX PK_project_issue_types
+	ON project_issue_types (
+		issue_type_code ASC
+	);
+
+ALTER TABLE project_issue_types
+	ADD
+		CONSTRAINT PK_project_issue_types
+		PRIMARY KEY (
+			issue_type_code
+		);
+
+/* 작업 상태 */
+CREATE TABLE project_task_status (
+	task_status_code VARCHAR2(30) NOT NULL, /* 작업 상태 코드 */
+	task_status VARCHAR2(20) NOT NULL /* 작업 상태 */
+);
+
+CREATE UNIQUE INDEX PK_project_task_status
+	ON project_task_status (
+		task_status_code ASC
+	);
+
+ALTER TABLE project_task_status
+	ADD
+		CONSTRAINT PK_project_task_status
+		PRIMARY KEY (
+			task_status_code
+		);
+
+/* 메시지 */
+CREATE TABLE messages (
+	message_id NUMBER NOT NULL, /* 메시지 일련번호 */
+	author_id VARCHAR2(50) NOT NULL, /* 작성자 */
+	conversation_id VARCHAR2(50) NOT NULL, /* 대화방 번호 */
+	content VARCHAR2(1000) NOT NULL, /* 내용 */
+	creation_time TIMESTAMP NOT NULL /* 작성시간 */
+);
+
+CREATE UNIQUE INDEX PK_messages
+	ON messages (
+		message_id ASC
+	);
+
+ALTER TABLE messages
+	ADD
+		CONSTRAINT PK_messages
+		PRIMARY KEY (
+			message_id
+		);
+
+/* 쪽지 */
+CREATE TABLE notes (
+	note_id NUMBER NOT NULL, /* 쪽지 일련번호 */
+	author_id VARCHAR2(50) NOT NULL, /* 작성자 */
+	receiver_id VARCHAR2(50) NOT NULL, /* 수신자 */
+	content VARCHAR2(1000) NOT NULL, /* 내용 */
+	creation_time TIMESTAMP NOT NULL /* 작성시간 */
+);
+
+CREATE UNIQUE INDEX PK_notes
+	ON notes (
+		note_id ASC
+	);
+
+ALTER TABLE notes
+	ADD
+		CONSTRAINT PK_notes
+		PRIMARY KEY (
+			note_id
+		);
+
+/* 대화방 */
+CREATE TABLE chatrooms (
+	conversation_id VARCHAR2(50) NOT NULL, /* 대화방 일련번호 */
+	last_message_id NUMBER NOT NULL, /* 마지막 메세지 번호 */
+	conversation_creation_time TIMESTAMP NOT NULL /* 대화방 생성시간 */
+);
+
+CREATE UNIQUE INDEX PK_chatrooms
+	ON chatrooms (
+		conversation_id ASC
+	);
+
+ALTER TABLE chatrooms
+	ADD
+		CONSTRAINT PK_chatrooms
+		PRIMARY KEY (
+			conversation_id
+		);
+
+/* 참여 */
+CREATE TABLE participations (
+	user_id VARCHAR2(50) NOT NULL, /* 참여자 아이디 */
+	conversation_id VARCHAR2(50) NOT NULL, /* 대화방 번호 */
+	join_time TIMESTAMP NOT NULL /* 대화방 접속시간 */
+);
+
+CREATE UNIQUE INDEX PK_participations
+	ON participations (
+		user_id ASC,
+		conversation_id ASC
+	);
+
+ALTER TABLE participations
+	ADD
+		CONSTRAINT PK_participations
+		PRIMARY KEY (
+			user_id,
+			conversation_id
+		);
+
+/* 사용자 */
+CREATE TABLE users (
+	user_id VARCHAR2(50) NOT NULL, /* 사용자 ID */
+	user_pw VARCHAR2(50) NOT NULL, /* 사용자 비밀번호 */
+	user_name VARCHAR2(20) NOT NULL, /* 사용자 이름 */
+	position_code NUMBER NOT NULL, /* 직급코드 */
+	team_code NUMBER NOT NULL, /* 팀 코드 */
+	user_email VARCHAR2(50) NOT NULL, /* 사용자 이메일 */
+	user_phone VARCHAR2(50) NOT NULL, /* 사용자 전화번호 */
+	user_regitdate TIMESTAMP /* 등록일 */
+);
+
+CREATE UNIQUE INDEX PK_users
+	ON users (
+		user_id ASC
+	);
+
+ALTER TABLE users
+	ADD
+		CONSTRAINT PK_users
+		PRIMARY KEY (
+			user_id
+		);
+
+/* 직책 */
+CREATE TABLE dutys (
+	duty_code VARCHAR2(30) NOT NULL, /* 직책코드 */
+	duty_name VARCHAR2(50) NOT NULL /* 직책 이름 */
+);
+
+CREATE UNIQUE INDEX PK_dutys
+	ON dutys (
+		duty_code ASC
+	);
+
+ALTER TABLE dutys
+	ADD
+		CONSTRAINT PK_dutys
+		PRIMARY KEY (
+			duty_code
+		);
+
+/* 직급 */
+CREATE TABLE positions (
+	position_code NUMBER NOT NULL, /* 직급코드 */
+	position_name VARCHAR2(20) NOT NULL /* 직급이름 */
+);
+
+CREATE UNIQUE INDEX PK_positions
+	ON positions (
+		position_code ASC
+	);
+
+ALTER TABLE positions
+	ADD
+		CONSTRAINT PK_positions
+		PRIMARY KEY (
+			position_code
+		);
+
+/* 부서 */
+CREATE TABLE teams (
+	team_code NUMBER NOT NULL, /* 팀 코드 */
+	team_name VARCHAR2(20) NOT NULL, /* 팀 이름 */
+	team_upper VARCHAR2(20), /* 상위 팀 */
+	team_seq NUMBER, /* 팀 순서 */
+	team_use VARCHAR2(5) NOT NULL /* 사용여부 */
+);
+
+CREATE UNIQUE INDEX PK_teams
+	ON teams (
+		team_code ASC
+	);
+
+ALTER TABLE teams
+	ADD
+		CONSTRAINT PK_teams
+		PRIMARY KEY (
+			team_code
+		);
+
+/* 프로젝트 상태 */
+CREATE TABLE project_status (
+	project_statusCode VARCHAR2(30) NOT NULL, /* 프로젝트 상태 코드 */
+	project_status VARCHAR2(50) NOT NULL /* 프로젝트 상태 */
+);
+
+CREATE UNIQUE INDEX PK_project_status
+	ON project_status (
+		project_statusCode ASC
+	);
+
+ALTER TABLE project_status
+	ADD
+		CONSTRAINT PK_project_status
+		PRIMARY KEY (
+			project_statusCode
+		);
+
+/* 작업 담당 */
+CREATE TABLE project_task_managers (
+	task_manager_code VARCHAR2(30) NOT NULL, /* 작업 담당 코드 */
+	task_manager_id VARCHAR2(50), /* 작업 담당자 아이디 */
+	task_code VARCHAR2(30) /* 작업 코드 */
+);
+
+CREATE UNIQUE INDEX PK_project_task_managers
+	ON project_task_managers (
+		task_manager_code ASC
+	);
+
+ALTER TABLE project_task_managers
+	ADD
+		CONSTRAINT PK_project_task_managers
+		PRIMARY KEY (
+			task_manager_code
+		);
+
+/* 프로젝트 서브 관리자 */
+CREATE TABLE project_submanagers (
+	subgmanager_code VARCHAR2(30) NOT NULL, /* 서브 관리자 코드 */
+	submanager_id VARCHAR2(50) NOT NULL, /* 사용자 ID */
+	project_code VARCHAR2(50) NOT NULL /* 프로젝트 코드 */
+);
+
+CREATE UNIQUE INDEX PK_project_submanagers
+	ON project_submanagers (
+		subgmanager_code ASC
+	);
+
+ALTER TABLE project_submanagers
+	ADD
+		CONSTRAINT PK_project_submanagers
+		PRIMARY KEY (
+			subgmanager_code
+		);
+
+/* 결재첨부파일 */
+CREATE TABLE approvalFile (
+	ap_file_no NUMBER NOT NULL, /* 첨부파일번호 */
+	ap_no NUMBER NOT NULL, /* 결재문서 번호 */
+	ap_file_name VARCHAR2(200), /* 파일명 */
+	ap_file_path VARCHAR2(200), /* 파일저장경로 */
+	ap_file_type CHAR(1) /* 파일타입 */
+);
+
+CREATE UNIQUE INDEX PK_approvalFile
+	ON approvalFile (
+		ap_file_no ASC
+	);
+
+ALTER TABLE approvalFile
+	ADD
+		CONSTRAINT PK_approvalFile
+		PRIMARY KEY (
+			ap_file_no
+		);
+
+/* 결재선 */
+CREATE TABLE approvalPath (
+	ap_path_no NUMBER NOT NULL, /* 결재선 번호 */
+	ap_path1 VARCHAR2(200) NOT NULL, /* 1차 결재자 */
+	ap_path2 VARCHAR2(200), /* 2차 결재자 */
+	ap_path3 VARCHAR2(200) /* 3차 결재자 */
+);
+
+CREATE UNIQUE INDEX PK_approvalPath
+	ON approvalPath (
+		ap_path_no ASC
+	);
+
+ALTER TABLE approvalPath
+	ADD
+		CONSTRAINT PK_approvalPath
+		PRIMARY KEY (
+			ap_path_no
+		);
+
+/* 결재문서 */
+CREATE TABLE approvalDoc (
+	ap_no NUMBER NOT NULL, /* 결재문서 번호 */
+	ap_doc_no NUMBER NOT NULL, /* 문서양식번호 */
+	user_id VARCHAR2(50), /* 기안자 */
+	ap_title VARCHAR2(100) NOT NULL, /* 제목 */
+	ap_content VARCHAR2(3000) NOT NULL, /* 문서 내용 */
+	ap_status CHAR(1) NOT NULL, /* 문서 상태 */
+	ap_step NUMBER NOT NULL, /* 현재결재단계 */
+	ap_signpath VARCHAR2(100) NOT NULL, /* 결재경로문자열 */
+	ap_create_date TIMESTAMP NOT NULL, /* 작성일자 */
+	ap_modify_date TIMESTAMP, /* 수정일자 */
+	ap_end_date TIMESTAMP /* 완료일자 */
+);
+
+CREATE UNIQUE INDEX PK_approvalDoc
+	ON approvalDoc (
+		ap_no ASC
+	);
+
+ALTER TABLE approvalDoc
+	ADD
+		CONSTRAINT PK_approvalDoc
+		PRIMARY KEY (
+			ap_no
+		);
+
+/* 결재문서 양식 */
+CREATE TABLE approvalForm (
+	 ap_doc_no NUMBER NOT NULL, /* 문서양식번호 */
+	ap_path_no NUMBER, /* 결재선 번호 */
+	 ap_doc_name VARCHAR2(200) NOT NULL, /* 문서양식명 */
+	 ap_doc_form VARCHAR2(3000) NOT NULL /* 문서양식내용 */
+);
+
+CREATE UNIQUE INDEX PK_approvalForm
+	ON approvalForm (
+		 ap_doc_no ASC
+	);
+
+ALTER TABLE approvalForm
+	ADD
+		CONSTRAINT PK_approvalForm
+		PRIMARY KEY (
+			 ap_doc_no
+		);
+
+/* 결재 */
+CREATE TABLE approval (
+	ap_process_no NUMBER NOT NULL, /* 결재 번호 */
+	ap_no NUMBER NOT NULL, /* 결재문서 번호 */
+	user_id VARCHAR2(50), /* 결재자 */
+	duty_code VARCHAR2(30) NOT NULL, /* 직책 */
+	ap_process_step NUMBER NOT NULL, /* 결재 단계 */
+	ap_process_result CHAR(1) NOT NULL, /* 결재 처리결과 */
+	ap_process_comment VARCHAR2(500), /* 결재 의견 */
+	ap_process_receivedate TIMESTAMP NOT NULL, /* 결재수신일자 */
+	ap_process_signdate TIMESTAMP NOT NULL /* 결재처리일자 */
+);
+
+CREATE UNIQUE INDEX PK_approval
+	ON approval (
+		ap_process_no ASC
+	);
+
+ALTER TABLE approval
+	ADD
+		CONSTRAINT PK_approval
+		PRIMARY KEY (
+			ap_process_no
+		);
+
+/* 결재참조자 */
+CREATE TABLE approvalReferrer (
+	ap_no NUMBER NOT NULL, /* 결재문서 번호 */
+	user_id VARCHAR2(50) NOT NULL /* 참조자 */
+);
+
+CREATE UNIQUE INDEX PK_approvalReferrer
+	ON approvalReferrer (
+		ap_no ASC,
+		user_id ASC
+	);
+
+ALTER TABLE approvalReferrer
+	ADD
+		CONSTRAINT PK_approvalReferrer
+		PRIMARY KEY (
+			ap_no,
+			user_id
+		);
+
+/* event_types */
+CREATE TABLE event_types (
+	event_type_id VARCHAR2(30) NOT NULL, /* event_type_id */
+	event_type VARCHAR2(50) NOT NULL /* event_type */
+);
+
+CREATE UNIQUE INDEX PK_event_types
+	ON event_types (
+		event_type_id ASC
+	);
+
+ALTER TABLE event_types
+	ADD
+		CONSTRAINT PK_event_types
+		PRIMARY KEY (
+			event_type_id
+		);
+
+/* Event Table */
+CREATE TABLE events (
+	event_id VARCHAR2(50) NOT NULL, /* event_id */
+	event_title VARCHAR2(100) NOT NULL, /* event_title */
+	event_start_date DATE NOT NULL, /* start_date */
+	event_finish_date DATE NOT NULL, /* finish_date */
+	event_description VARCHAR2(500), /* description */
+	event_all_day CHAR(1), /* all_day_event */
+	event_place VARCHAR2(50), /* plase */
+	event_type_id VARCHAR2(30) NOT NULL, /* event_typeCode */
+	project_code VARCHAR2(50) /* 프로젝트 코드 */
+);
+
+CREATE UNIQUE INDEX PK_events
+	ON events (
+		event_id ASC
+	);
+
+ALTER TABLE events
+	ADD
+		CONSTRAINT PK_events
+		PRIMARY KEY (
+			event_id
+		);
+
+/* Group_event */
+CREATE TABLE event_groups (
+	event_id VARCHAR2(50) NOT NULL, /* event_id */
+	user_id VARCHAR2(50) NOT NULL /* user_id */
+);
+
+CREATE UNIQUE INDEX PK_event_groups
+	ON event_groups (
+		event_id ASC,
+		user_id ASC
+	);
+
+ALTER TABLE event_groups
+	ADD
+		CONSTRAINT PK_event_groups
+		PRIMARY KEY (
+			event_id,
+			user_id
+		);
+
+/* 이슈파일 */
+CREATE TABLE issue_files (
+	issueFile_code VARCHAR2(30) NOT NULL, /* 이슈파일코드 */
+	issueFile_name VARCHAR2(100) NOT NULL, /* 이슈파일이름 */
+	issueFile_path VARCHAR2(200) NOT NULL, /* 이슈파일경로 */
+	issue_code VARCHAR2(30) NOT NULL /* 이슈 코드 */
+);
+
+CREATE UNIQUE INDEX PK_issue_files
+	ON issue_files (
+		issueFile_code ASC
+	);
+
+ALTER TABLE issue_files
+	ADD
+		CONSTRAINT PK_issue_files
+		PRIMARY KEY (
+			issueFile_code
+		);
+
+/* 조치파일 */
+CREATE TABLE action_files (
+	actionFIle_code VARCHAR2(30) NOT NULL, /* 조치파일코드 */
+	actionFile_name VARCHAR2(100) NOT NULL, /* 조치파일이름 */
+	actionFile_path VARCHAR2(200) NOT NULL, /* 조치파일경로 */
+	issue_code VARCHAR2(30) /* 이슈 코드 */
+);
+
+CREATE UNIQUE INDEX PK_action_files
+	ON action_files (
+		actionFIle_code ASC
+	);
+
+ALTER TABLE action_files
+	ADD
+		CONSTRAINT PK_action_files
+		PRIMARY KEY (
+			actionFIle_code
+		);
+
+ALTER TABLE projects
+	ADD
+		CONSTRAINT FK_project_types_TO_projects
+		FOREIGN KEY (
+			project_typeCode
+		)
+		REFERENCES project_types (
+			project_typeCode
+		);
+
+ALTER TABLE projects
+	ADD
+		CONSTRAINT FK_project_status_TO_projects
+		FOREIGN KEY (
+			project_statusCode
+		)
+		REFERENCES project_status (
+			project_statusCode
+		);
+
+ALTER TABLE project_tasks
+	ADD
+		CONSTRAINT FK_grps_TO_prjct_tsks
+		FOREIGN KEY (
+			taskGroup_code
+		)
+		REFERENCES project_task_groups (
+			taskGroup_code
+		);
+
+ALTER TABLE project_tasks
+	ADD
+		CONSTRAINT FK_prjct_sts_TO_prjct_tsks
+		FOREIGN KEY (
+			task_status_code
+		)
+		REFERENCES project_task_status (
+			task_status_code
+		);
+
+ALTER TABLE project_task_groups
+	ADD
+		CONSTRAINT FK_prjcts_TO_prjct_tsk_grps
+		FOREIGN KEY (
+			project_code
+		)
+		REFERENCES projects (
+			project_code
+		);
+
+ALTER TABLE project_issues
+	ADD
+		CONSTRAINT FK_prjct_is_tps_TO_prjct_is
+		FOREIGN KEY (
+			issue_type_code
+		)
+		REFERENCES project_issue_types (
+			issue_type_code
+		);
+
+ALTER TABLE project_issues
+	ADD
+		CONSTRAINT FK_prjct_tasks_TO_prjct_is
+		FOREIGN KEY (
+			task_code
+		)
+		REFERENCES project_tasks (
+			task_code
+		);
+
+ALTER TABLE project_members
+	ADD
+		CONSTRAINT FK_projects_TO_project_members
+		FOREIGN KEY (
+			project_code
+		)
+		REFERENCES projects (
+			project_code
+		);
+
+ALTER TABLE project_members
+	ADD
+		CONSTRAINT FK_users_TO_project_members
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES users (
+			user_id
+		);
+
+ALTER TABLE project_members
+	ADD
+		CONSTRAINT FK_dutys_TO_project_members
+		FOREIGN KEY (
+			duty_code
+		)
+		REFERENCES dutys (
+			duty_code
+		);
+
+ALTER TABLE project_outputs
+	ADD
+		CONSTRAINT FK_tps_TO_prjct_otpts
+		FOREIGN KEY (
+			output_type_code
+		)
+		REFERENCES project_output_types (
+			output_type_code
+		);
+
+ALTER TABLE project_outputs
+	ADD
+		CONSTRAINT FK_tasks_TO_project_outputs
+		FOREIGN KEY (
+			task_code
+		)
+		REFERENCES project_tasks (
+			task_code
+		);
+
+ALTER TABLE messages
+	ADD
+		CONSTRAINT FK_chatrooms_TO_messages
+		FOREIGN KEY (
+			conversation_id
+		)
+		REFERENCES chatrooms (
+			conversation_id
+		);
+
+ALTER TABLE messages
+	ADD
+		CONSTRAINT FK_users_TO_messages
+		FOREIGN KEY (
+			author_id
+		)
+		REFERENCES users (
+			user_id
+		);
+
+ALTER TABLE notes
+	ADD
+		CONSTRAINT FK_users_TO_notes2
+		FOREIGN KEY (
+			author_id
+		)
+		REFERENCES users (
+			user_id
+		);
+
+ALTER TABLE notes
+	ADD
+		CONSTRAINT FK_users_TO_notes
+		FOREIGN KEY (
+			receiver_id
+		)
+		REFERENCES users (
+			user_id
+		);
+
+ALTER TABLE participations
+	ADD
+		CONSTRAINT FK_chatrooms_TO_participations
+		FOREIGN KEY (
+			conversation_id
+		)
+		REFERENCES chatrooms (
+			conversation_id
+		);
+
+ALTER TABLE participations
+	ADD
+		CONSTRAINT FK_users_TO_participations
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES users (
+			user_id
+		);
+
+ALTER TABLE users
+	ADD
+		CONSTRAINT FK_positions_TO_users
+		FOREIGN KEY (
+			position_code
+		)
+		REFERENCES positions (
+			position_code
+		);
+
+ALTER TABLE users
+	ADD
+		CONSTRAINT FK_teams_TO_users
+		FOREIGN KEY (
+			team_code
+		)
+		REFERENCES teams (
+			team_code
+		);
+
+ALTER TABLE project_task_managers
+	ADD
+		CONSTRAINT FK_tsks_TO_prjct_mngrs
+		FOREIGN KEY (
+			task_code
+		)
+		REFERENCES project_tasks (
+			task_code
+		);
+
+ALTER TABLE project_submanagers
+	ADD
+		CONSTRAINT FK_prjcts_TO_prjct_sbmngrs
+		FOREIGN KEY (
+			project_code
+		)
+		REFERENCES projects (
+			project_code
+		);
+
+ALTER TABLE approvalFile
+	ADD
+		CONSTRAINT FK_approvalDoc_TO_approvalFile
+		FOREIGN KEY (
+			ap_no
+		)
+		REFERENCES approvalDoc (
+			ap_no
+		);
+
+ALTER TABLE approvalDoc
+	ADD
+		CONSTRAINT FK_approvalForm_TO_approvalDoc
+		FOREIGN KEY (
+			ap_doc_no
+		)
+		REFERENCES approvalForm (
+			 ap_doc_no
+		);
+
+ALTER TABLE approvalDoc
+	ADD
+		CONSTRAINT FK_users_TO_approvalDoc
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES users (
+			user_id
+		);
+
+ALTER TABLE approvalForm
+	ADD
+		CONSTRAINT FK_approvalPath_TO_aprvlFrm
+		FOREIGN KEY (
+			ap_path_no
+		)
+		REFERENCES approvalPath (
+			ap_path_no
+		);
+
+ALTER TABLE approval
+	ADD
+		CONSTRAINT FK_approvalDoc_TO_approval
+		FOREIGN KEY (
+			ap_no
+		)
+		REFERENCES approvalDoc (
+			ap_no
+		);
+
+ALTER TABLE approval
+	ADD
+		CONSTRAINT FK_users_TO_approval
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES users (
+			user_id
+		);
+
+ALTER TABLE approvalReferrer
+	ADD
+		CONSTRAINT FK_approvalDoc_TO_aprvlRfr
+		FOREIGN KEY (
+			ap_no
+		)
+		REFERENCES approvalDoc (
+			ap_no
+		);
+
+ALTER TABLE approvalReferrer
+	ADD
+		CONSTRAINT FK_users_TO_approvalReferrer
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES users (
+			user_id
+		);
+
+ALTER TABLE events
+	ADD
+		CONSTRAINT FK_event_types_TO_events
+		FOREIGN KEY (
+			event_type_id
+		)
+		REFERENCES event_types (
+			event_type_id
+		);
+
+ALTER TABLE events
+	ADD
+		CONSTRAINT FK_projects_TO_events
+		FOREIGN KEY (
+			project_code
+		)
+		REFERENCES projects (
+			project_code
+		);
+
+ALTER TABLE event_groups
+	ADD
+		CONSTRAINT FK_events_TO_event_groups
+		FOREIGN KEY (
+			event_id
+		)
+		REFERENCES events (
+			event_id
+		);
+
+ALTER TABLE event_groups
+	ADD
+		CONSTRAINT FK_users_TO_event_groups
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES users (
+			user_id
+		);
+
+ALTER TABLE issue_files
+	ADD
+		CONSTRAINT FK_issues_TO_issue_files
+		FOREIGN KEY (
+			issue_code
+		)
+		REFERENCES project_issues (
+			issue_code
+		);
+
+ALTER TABLE action_files
+	ADD
+		CONSTRAINT FK_issues_TO_action_files
+		FOREIGN KEY (
+			issue_code
+		)
+		REFERENCES project_issues (
+			issue_code
+		);
